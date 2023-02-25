@@ -1,0 +1,39 @@
+header {
+    text-align: center;
+    background-color: rgb(37, 37, 37);
+    padding: 10px;
+    box-shadow: 0 0 8px 2px #000000;
+    
+}
+header h1 {
+    color: aquamarine;
+    /* text-shadow: 0 0 20px; */
+    font-size: 50px;
+}
+
+main {
+    margin: 30px;
+    color: azure;
+}
+
+main div {
+    
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    border: 5px;
+    border-style: solid;
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 0 7px 0px #000000;
+    text-shadow: 0 0 2px;
+    margin: 20px;
+
+}
+main .link {
+    color: #80ffd4;
+    background-color: black;
+    border: 2px;
+    border-style: solid;
+    border-radius: 4px;
+}
