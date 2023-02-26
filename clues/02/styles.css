@@ -15,9 +15,7 @@ main {
     margin: 30px;
     color: azure;
 }
-
-main div {
-    
+main div div {
     text-align: center;
     font-size: 25px;
     padding: 10px;
@@ -28,12 +26,26 @@ main div {
     box-shadow: 0 0 7px 0px #000000;
     text-shadow: 0 0 2px;
     margin: 20px;
-
 }
-main .link {
+.notes {
+    display: flex;
+}
+.notes div {
+    padding-bottom: 30px;
+    width: 50%;
+}
+.notes p {
+    text-decoration: underline;
+}
+li {
+    text-align: left;
+}
+
+.link {
     color: #80ffd4;
     background-color: black;
     border: 2px;
     border-style: solid;
     border-radius: 4px;
 }
+
