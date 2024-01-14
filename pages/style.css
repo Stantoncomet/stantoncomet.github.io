@@ -1,0 +1,69 @@
+* {
+    margin: 0;
+}
+
+:root {
+    background: rgb(42, 38, 38);
+
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background: rgb(27, 26, 26);
+    color: rgb(134, 134, 134);
+    padding: 10px;
+    font-size: 15px;
+    box-shadow: 0 0 5px #000;
+    display: flex;
+    align-items: center;
+    float: left;
+    width: 100%;
+    position: fixed;
+    /* justify-content: space-between; */
+
+}
+
+header h1 {
+    padding-right: 10px;
+    padding-left: 10px
+}
+
+footer {
+    background: rgb(27, 26, 26);
+    color: rgb(134, 134, 134);
+    /* padding: 10px; */
+    font-size: 15px;
+    box-shadow: 0 0 5px #000;
+    display: flex;
+    align-items: center;
+    float: left;
+    width: 100%;
+
+}
+
+article {
+    color: white;
+    padding: 10px;
+    padding-top: 70px;
+    /* background: rgb(27, 26, 26); */
+}
+
+a:link, a:visited {
+    border: 2px solid green;
+    border-radius: 10px;
+    color: green;
+    padding: 2px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+
+  }
+a:hover, a:active {
+    border: 2px solid rgb(4, 168, 4);
+    color: rgb(4, 168, 4);
+}

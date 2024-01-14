@@ -1,0 +1,39 @@
+body {
+    background-image: linear-gradient(to bottom, rgb(22, 22, 22), rgb(54, 54, 54));
+    margin: 0px;
+    height: 100vh;
+}
+
+#main {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 0px;
+    text-align: center;
+    justify-content: center;
+}
+
+.window {
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    background-image: linear-gradient(to bottom, rgb(81, 67, 55), rgb(50, 52, 71));
+    margin: 10px;
+    margin-top: 2%;
+    
+}
+
+#gamefield {
+    width: 400px;
+    height: 800px;
+}
+#held {
+    width: 100px;
+    height: 100px;
+    border-color: black;
+}
+#next {
+    width: 100px;
+    height: 300px;
+    border-color: black;
+}

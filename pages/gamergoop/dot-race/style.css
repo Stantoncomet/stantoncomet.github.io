@@ -1,0 +1,29 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url("../../../images/art/background.png") ;
+    background-repeat: repeat;
+    background-color: black;
+}
+#main {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0px;
+    text-align: center;
+}
+
+h1 {
+    background-color: antiquewhite;
+    border-radius: 10px;
+}
+
+#gamefield {
+    width: 1000px;
+    height: 800px;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    background-color: rgb(19, 19, 19);
+}
