@@ -1,0 +1,258 @@
+@font-face {
+    font-family: "StantonScript";
+    src: url("../fonts/StantonsScript-Regular.ttf") format("truetype")
+}
+
+
+
+body {
+    font-family: StantonScript;
+    background-image: linear-gradient(to bottom, hsl(0, 100%, 50%), hsl(34, 100%, 50%));
+    background-image: linear-gradient(to bottom, rgb(22, 22, 22), rgb(54, 54, 54));
+    /* background-image: url("../images/art/background.png") ; */
+    background-repeat: repeat;
+    background-color: rgb(22, 22, 22);
+
+    margin: 0;
+    display: flex;
+
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:visited {
+    text-decoration: none;
+}
+
+#topbar {
+    margin: 0px;
+    background-color: hsl(0, 0%, 52%);
+    background-image: linear-gradient(to bottom, hsl(34, 100%, 50%), rgb(255, 0, 0));
+    height: 135px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+
+    /* box-shadow: 0px 10px 10px 0px #ff0000; */
+    box-shadow: 3px 10px 5px #000000;
+    
+
+}
+#topbar h1 {
+    font-size: 50px;
+    color: white;
+    margin: 10px 0px;
+    /*border-style: solid;
+    border-color: rgba(255,255,255,0.5);
+    padding: 3px 15%;
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 10px;*/
+}
+#topbar ul {
+    display: flex;
+    list-style: none;
+    margin: 10px 0px;
+    flex-direction: row;
+    padding: 0px;
+}
+#topbar li * {
+    padding: 4px;
+    font-size: 20px;
+    margin: 0px 10px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: hsl(0, 93%, 24%);
+    background-color: rgb(118, 4, 4);
+}
+
+#topbar ul li a {
+    text-decoration: none;
+    color:black;
+}
+#topbar ul li a:hover {
+    background-color: hsla(0, 93%, 24%);
+    border-color: hsl(0, 97%, 13%);
+}
+#topbar ul li a:visited {
+    color:black;
+}
+
+
+.sidebar {
+    /* position: fixed; */
+    min-height: 100vh;
+
+    display: flex;
+    flex-flow: column;
+    
+
+    /* border-color:brown; */
+    /* border-style: solid; */
+    border-width: 0px;
+
+}
+
+#left-sidebar {
+    background-color: rgb(98, 141, 127);
+    background-image: linear-gradient(to right, darkmagenta, aquamarine);
+    width: 400px;
+    
+    border-right-width: 4px;
+}
+
+#right-sidebar {
+    background-image: linear-gradient(to right, aquamarine, darkmagenta);    
+    width: 25%;
+    border-left-width: 4px;
+
+    align-items: center;
+}
+.sidebar p {
+    margin: 20px;
+    font-size: 20px;
+    text-align: center;
+
+    background-color:rgba(240, 248, 255, 0.4);
+    border-style: solid;
+    border-radius: 8px;
+    border-color: black;
+    padding: 3px
+}
+
+
+#me-pic {
+    margin-top: 25px;
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50px;
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+    background-image: url("../images/000.png");
+    background-size: 100px;
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+}
+#logo:hover {
+    background-image: url("../images/a_cat_house_logo.gif");
+}
+
+#welcome {
+    writing-mode: vertical-lr;
+    
+    font-size: 80px;
+    margin-top: 20px;
+
+    
+}
+
+
+
+
+
+#lookyhere {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+
+}
+
+.course {
+    width: 25vw;
+    /* position: relative;
+    left: 180px; */
+
+    margin: 15px;
+    border-style: solid;
+    border-width: 6px;
+    border-color: aliceblue;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    color: aquamarine;
+    background-color: rgb(0, 0, 0, 0.2);
+    /* background-image: radial-gradient(rgb(76, 118, 144), rgb(83, 54, 83)) */
+
+    
+}
+
+.course ul {
+    background-color: rgb(0, 0, 0, 0.2);
+    border-color: aliceblue;
+    border-style: dashed;
+    border-width: 0;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+}
+.course ul li {
+    margin: 10px;
+    font-size: 22px;
+    color:burlywood;
+
+}
+.course ul li a {
+    text-decoration: none;
+    color:orange;
+}
+.course ul li a:hover {
+    text-decoration: underline;
+}
+.course ul li a:visited {
+    color:orange;
+}
+
+.minecraft {
+    background-image: url('images/art/dirt.png');
+}
+
+.course h1 {
+    align-self: center;
+    width: fit-content;
+    text-align: center;
+    padding: 20px;
+    font-size: 35px;
+    
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    border-style: solid;
+    border-color: black;
+
+}
+.course h1 a {
+    color: aquamarine;
+}
+.course h1 a:visited {
+    color: aquamarine;
+}
+
+.course p {
+    margin: 10px;
+    font-size: 24px;
+}
+
+
+.hot {
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url('../images/hot.gif');
+    background-size: contain;
+    display: inline-block;
+    color: red; 
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000; 
+}
