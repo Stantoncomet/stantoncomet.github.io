@@ -1,3 +1,19 @@
+let enable_ap = false; //abstract pieces
+let enable_old_school = true; //no ghost, next, hold, etc.
+
+function toggleOldSchool() {
+    let nxt_canvas = document.getElementById('next');
+    let hld_canvas = document.getElementById('held');
+    enable_old_school = !enable_old_school;
+    if (enable_old_school) {
+        nxt_canvas.style.visibility = 'hidden';
+        hld_canvas.style.visibility = 'hidden';
+    } else {
+        nxt_canvas.style.visibility = 'visible';
+        hld_canvas.style.visibility = 'visible';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', e => {
 let dropSound = new Audio('drop.mp3');
 //dropSound.play();
@@ -11,6 +27,9 @@ const height = canvas.height;
 //NEXT canvas
 let nxt_canvas = document.getElementById('next');
 let nxt_ctx = nxt_canvas.getContext("2d");
+//HELD canvas
+let hld_canvas = document.getElementById('held');
+let hld_ctx = hld_canvas.getContext("2d");
 
 const u = width/10;
 const bw = width/u
@@ -227,33 +246,95 @@ const ap = {
     ],
     john: [
         [
-            [1,1,1],
+            [1,1],
             [0,1,1],
             [0,0,1]
         ],
         [
             [0,0,1],
             [0,1,1],
-            [1,1,1]
+            [1,1]
         ],
         [
-            [1,0,0],
-            [1,1,0],
+            [1],
+            [1,1],
+            [0,1,1]
+        ],
+        [
+            [0,1,1],
+            [1,1],
+            [1]
+        ],
+        '#330'
+    ],
+    gerald: [
+        [
+            [1,1,1],
+            [1,0,1],
             [1,1,1]
         ],
         [
             [1,1,1],
-            [1,1,0],
-            [1,0,0]
+            [1,0,1],
+            [1,1,1]
         ],
-        '#330'
-    ]
+        [
+            [1,1,1],
+            [1,0,1],
+            [1,1,1]
+        ],
+        [
+            [1,1,1],
+            [1,0,1],
+            [1,1,1]
+        ],
+        '#8aa'
+    ],
+    dia: [
+        [
+            [1],
+            [0,1]
+        ],
+        [
+            [0,1],
+            [1]
+        ],
+        [
+            [1],
+            [0,1]
+        ],
+        [
+            [0,1],
+            [1]
+        ],
+        '#afa'
+    ],
+    evo: [
+        [
+            [1,1],
+            [1]
+        ],
+        [
+            [1]
+        ],
+        [
+            [1,1,1]
+        ],
+        [
+            [1,1,1,1],
+            [1,0,1,1]
+        ],
+        '#fff'
+    ],
+    
 }
 
 
 //make current piece
 let usable_pieces = [p.square, p.line, p.t, p.l, p.j, p.s, p.z];
-usable_pieces.push(ap.j, ap.c, ap.john);
+if (enable_ap)
+    usable_pieces.push(ap.j, ap.c, ap.john, ap.gerald, ap.dia, ap.evo);
+//usable_pieces = [ap.evo];
 let current_piece = new Piece(4, 0, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options);
 //current_piece = new Piece(4, 0, ap.c, 0, piece_options);
 console.log(current_piece);
@@ -268,12 +349,18 @@ for (let i=0; i<3; i++) {
 }
 
 
+//remove next + hold
+if (enable_old_school) {
+    nxt_canvas.style.visibility = 'hidden';
+    hld_canvas.style.visibility = 'hidden';
+}
+
 
 //do the display thing
 const fps = 60;
 setInterval(draw, 1000/fps);
 //do the drop thing thing
-let droprate = 1; //drops per second
+let droprate = 2; //drops per second
 setInterval(logic, 1000/droprate);
 
 
@@ -284,18 +371,21 @@ function draw() {
     ctx.fillStyle = '#414';
     ctx.fillRect(0, 0, width, height);
     nxt_ctx.fillStyle = '#414';
-    nxt_ctx.fillRect(0, 0, nxt_canvas.width, nxt_canvas.height);
+    if (!enable_old_school) 
+        nxt_ctx.fillRect(0, 0, nxt_canvas.width, nxt_canvas.height);
     for (let i=0; i<bw; i++) {
         for (let j=0; j<bh; j++) {
             ctx.fillStyle = '#000';
             ctx.fillRect(i*u+1, j*u+1, u-2*1, u-2*1);
             nxt_ctx.fillStyle = '#000';
-            nxt_ctx.fillRect(i*u+1, j*u+1, u-2*1, u-2*1);
+            if (!enable_old_school) 
+                nxt_ctx.fillRect(i*u+1, j*u+1, u-2*1, u-2*1);
         }
     }
     
-    //ghost piece   
-    current_piece.drawGhost();
+    //ghost piece
+    if (!enable_old_school) 
+        current_piece.drawGhost();
 
     //current piece
     current_piece.draw();
@@ -305,10 +395,10 @@ function draw() {
 
     
     //NEXT
-
-    next_pieces.forEach(piece => {
-        piece.draw();
-    })
+    if (!enable_old_school)
+        next_pieces.forEach(piece => {
+            piece.draw();
+        })
     
    
     // let x = 6;
@@ -346,8 +436,14 @@ document.addEventListener('keydown', evt => {
                 current_piece.rotate(-1);
             break;
         }
+        case 'ArrowDown':
         case ' ': {
-            console.log("drop");
+            current_piece.hardDrop();
+            current_piece.set();
+            board = current_piece.updateBoard();
+            nextPiece()
+            checkClear();
+            //dropSound.play();
             break;
         }
         case 'ArrowLeft': {
@@ -363,12 +459,7 @@ document.addEventListener('keydown', evt => {
             break;
         }
         case 'ArrowDown': {
-            current_piece.hardDrop();
-            current_piece.set();
-            board = current_piece.updateBoard();
-            nextPiece()
-            checkClear();
-            //dropSound.play();
+            console.log("drop");
             break;
         }
         case 'c': {
@@ -404,6 +495,7 @@ function drawFallen() {
         cx*=u;
         cy*=u;
         ctx.fillStyle = cell; //board shows filled pieces as their colors
+        //ctx.fillStyle = '#fff';
         ctx.fillRect(cx, cy, u, u);
     })
 }
@@ -420,7 +512,6 @@ function nextPiece() {
         piece.y-=4;
     })
 }
-
 
 })
 
