@@ -24,16 +24,16 @@ body {
 }
 
 #gamefield {
-    width: 400px;
-    height: 800px;
+    width: 300px;
+    height: 600px;
 }
 #held {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-color: black;
 }
 #next {
-    width: 100px;
-    height: 300px;
+    width: 120px;
+    height: 360px;
     border-color: black;
 }
