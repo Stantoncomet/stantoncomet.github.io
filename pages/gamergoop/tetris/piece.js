@@ -17,6 +17,9 @@ class Piece {
     updateBoard() {
         return this.board.b;
     }
+    pushBoard(new_board) {
+        this.board.b = new_board;
+    }
 
     checkOverlap() {
         let piece = this.piece[this.rot];
@@ -41,11 +44,58 @@ class Piece {
             return false;
     }
 
+    checkEdge() {
+        let piece = this.piece[this.rot];
+        let x = this.x;
+        let oe = false; //off edge
+        piece.forEach((line, cy) => {
+            if (!Array.isArray(line)) return;
+            line.forEach((cell, cx) => {
+                if (!cell) return;
+                if (x+cx > 9 || x+cx < 0)
+                    oe = true;
+            })
+        });
+        if (oe)
+            return true;
+        else
+            return false;
+    }
+
     //returns true if it will drop wrongly
     checkFuture() {
         let piece = this.piece[this.rot];
         let x = this.x;
         let y = this.y;
+        const bh = this.board.h;
+        const bw = this.board.w;
+
+        let oob = false; //out of bounds
+        let io = false; //is overlapping with the piece below it
+
+        //check if each cell will be out of bounds
+        piece.forEach((line, cy) => {
+            if (!Array.isArray(line)) return;
+            line.forEach((cell, cx) => {
+                if (!cell) return;
+                const board_pos = (y*bw)+(cy*bw)+(x+cx);
+                const future_pos = board_pos+bw;
+                if (future_pos >= 200) 
+                    oob = true;
+
+                if (this.board.b[future_pos]) //if board pos is not "0"
+                    io = true
+            })
+        });
+
+        if (oob || io)
+            return true;
+        else
+            return false;
+    }
+
+    checkFutureAlt(x, y) {
+        let piece = this.piece[this.rot];
         const bh = this.board.h;
         const bw = this.board.w;
 
@@ -101,7 +151,34 @@ class Piece {
             if (!this.checkFuture())
                 this.y++;
         }
-        this.draw();
+        //this.draw(); //wierdly flashes on line clear if enabled
+    }
+
+    drawGhost() {
+        let piece = this.piece;
+        let x = this.x;
+        let y = this.y;
+        
+        this.ctx.fillStyle = '#999';
+        piece = piece[this.rot];
+
+        for (let i=0; i<this.board.h; i++) {
+            if (!this.checkFutureAlt(x, y))
+                y++;
+        }
+
+        x*=this.u;
+        y*=this.u;
+        
+        piece.forEach((line, cy) => {
+            if (!Array.isArray(line)) return
+            cy*=this.u;
+            line.forEach((cell, cx) => {
+                if (!cell) return; //if cell is "0", it won't draw anyting
+                cx*=this.u;
+                this.ctx.fillRect(x+cx,y+cy,this.u,this.u);
+            })
+        });
     }
 
     rotate(val) {

@@ -1,14 +1,16 @@
 document.addEventListener('DOMContentLoaded', e => {
 let dropSound = new Audio('drop.mp3');
-dropSound.play();
+//dropSound.play();
 
 
-let canvas = document.getElementById('gamefield')
+let canvas = document.getElementById('gamefield');  
 let ctx = canvas.getContext("2d");
-
 const width = canvas.width;
 const height = canvas.height;
-console.log(width, height);
+
+//NEXT canvas
+let nxt_canvas = document.getElementById('next');
+let nxt_ctx = nxt_canvas.getContext("2d");
 
 const u = width/10;
 const bw = width/u
@@ -222,16 +224,49 @@ const ap = {
             [1,1]
         ],
         '#77f'
+    ],
+    john: [
+        [
+            [1,1,1],
+            [0,1,1],
+            [0,0,1]
+        ],
+        [
+            [0,0,1],
+            [0,1,1],
+            [1,1,1]
+        ],
+        [
+            [1,0,0],
+            [1,1,0],
+            [1,1,1]
+        ],
+        [
+            [1,1,1],
+            [1,1,0],
+            [1,0,0]
+        ],
+        '#330'
     ]
 }
 
 
 //make current piece
 let usable_pieces = [p.square, p.line, p.t, p.l, p.j, p.s, p.z];
-usable_pieces.push(ap.j, ap.c);
+usable_pieces.push(ap.j, ap.c, ap.john);
 let current_piece = new Piece(4, 0, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options);
 //current_piece = new Piece(4, 0, ap.c, 0, piece_options);
 console.log(current_piece);
+
+
+//next piece setup
+
+let next_pieces = []
+for (let i=0; i<3; i++) {
+    next_pieces.push(new Piece(0, i*4+1, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options));
+    next_pieces[i].ctx = nxt_ctx;
+}
+
 
 
 //do the display thing
@@ -248,26 +283,33 @@ function draw() {
     //background
     ctx.fillStyle = '#414';
     ctx.fillRect(0, 0, width, height);
+    nxt_ctx.fillStyle = '#414';
+    nxt_ctx.fillRect(0, 0, nxt_canvas.width, nxt_canvas.height);
     for (let i=0; i<bw; i++) {
         for (let j=0; j<bh; j++) {
             ctx.fillStyle = '#000';
             ctx.fillRect(i*u+1, j*u+1, u-2*1, u-2*1);
+            nxt_ctx.fillStyle = '#000';
+            nxt_ctx.fillRect(i*u+1, j*u+1, u-2*1, u-2*1);
         }
     }
+    
+    //ghost piece   
+    current_piece.drawGhost();
 
     //current piece
     current_piece.draw();
 
     //fallen pieces
-    board.forEach((color, index) => {
-        if (!color) return;
-        let cx = index%bw;
-        let cy = Math.floor(index/bw);
-        cx*=u;
-        cy*=u;
-        ctx.fillStyle = color;
-        ctx.fillRect(cx, cy, u, u);
+    drawFallen();
+
+    
+    //NEXT
+
+    next_pieces.forEach(piece => {
+        piece.draw();
     })
+    
    
     // let x = 6;
     // let y = 14;
@@ -287,41 +329,45 @@ function logic() {
     if (current_piece.checkFuture()) {
         current_piece.set();
         board = current_piece.updateBoard();
-        current_piece = new Piece(4, 0, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options);
+        nextPiece();
         //dropSound.play();
     }
     current_piece.drop();
+
+    checkClear();
+
 }
 //key presses
 document.addEventListener('keydown', evt => {
     switch (evt.key) {
         case 'ArrowUp': {
             current_piece.rotate(1);
-            if (current_piece.checkOverlap())
+            if (current_piece.checkOverlap() || current_piece.checkEdge())
                 current_piece.rotate(-1);
             break;
         }
-        case 'ArrowDown': {
+        case ' ': {
             console.log("drop");
             break;
         }
         case 'ArrowLeft': {
             current_piece.move(-1);
-            if (current_piece.checkOverlap())
+            if (current_piece.checkOverlap() || current_piece.checkEdge())
                 current_piece.move(1);
             break;
         }
         case 'ArrowRight': {
             current_piece.move(1);
-            if (current_piece.checkOverlap())
+            if (current_piece.checkOverlap() || current_piece.checkEdge())
                 current_piece.move(-1);
             break;
         }
-        case ' ': {
+        case 'ArrowDown': {
             current_piece.hardDrop();
             current_piece.set();
             board = current_piece.updateBoard();
-            current_piece = new Piece(4, 0, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options);
+            nextPiece()
+            checkClear();
             //dropSound.play();
             break;
         }
@@ -332,7 +378,48 @@ document.addEventListener('keydown', evt => {
     }
 })
 
+function checkClear() {
+    //line clear
+    let lines = [];
+    for (let i=0; i<bh; i++) {
+        lines.push(board.slice(i*bw, (i+1)*bw));
+    }
+    board = [];
+    lines.forEach((line, index) => {
+        if (line.indexOf(0) > -1) {
+            board = board.concat(line);
+        } else {
+            board = [0,0,0,0,0,0,0,0,0,0].concat(board);
+        }
+    })
+    current_piece.pushBoard(board);
+    drawFallen();
+}
 
+function drawFallen() {
+    board.forEach((cell, index) => {
+        if (!cell) return;
+        let cx = index%bw;
+        let cy = Math.floor(index/bw);
+        cx*=u;
+        cy*=u;
+        ctx.fillStyle = cell; //board shows filled pieces as their colors
+        ctx.fillRect(cx, cy, u, u);
+    })
+}
+
+function nextPiece() {
+    current_piece = next_pieces[0];
+    current_piece.ctx = ctx;
+    current_piece.x = 4;
+    current_piece.y = 0;
+    next_pieces.shift();
+    next_pieces.push(new Piece(0, (next_pieces.length+1)*4+1, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options));
+    next_pieces[next_pieces.length-1].ctx = nxt_ctx;
+    next_pieces.forEach(piece => {
+        piece.y-=4;
+    })
+}
 
 
 })
