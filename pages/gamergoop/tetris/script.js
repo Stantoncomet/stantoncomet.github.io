@@ -1,4 +1,4 @@
-let enable_ap = false; //abstract pieces
+let enable_ap = true; //abstract pieces
 let enable_old_school = true; //no ghost, next, hold, etc.
 
 function toggleOldSchool() {
@@ -12,6 +12,10 @@ function toggleOldSchool() {
         nxt_canvas.style.visibility = 'visible';
         hld_canvas.style.visibility = 'visible';
     }
+}
+
+function toggleAP() {
+    
 }
 
 document.addEventListener('DOMContentLoaded', e => {
