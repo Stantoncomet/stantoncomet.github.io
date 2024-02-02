@@ -1,5 +1,5 @@
 let enable_ap = true; //abstract pieces
-let enable_old_school = true; //no ghost, next, hold, etc.
+let enable_old_school = false; //no ghost, next, hold, etc.
 let enabled_bp = true; //hell peices (8x8, bigger board recomended)
 
 function toggleOldSchool() {
