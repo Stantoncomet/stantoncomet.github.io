@@ -1,4 +1,4 @@
-let squares;
+let squares; //what
 function convert() {
     let csquares = "";
     let acsquares = [];
