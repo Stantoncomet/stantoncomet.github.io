@@ -36,7 +36,7 @@ let nxt_ctx = nxt_canvas.getContext("2d");
 // let hld_canvas = document.getElementById('held');
 // let hld_ctx = hld_canvas.getContext("2d");
 
-const u = width/10;
+const u = width/20;
 const bw = width/u
 const bh = height/u
 let board = Array(bw*bh).fill(0);
@@ -498,6 +498,49 @@ const bp = {
             [1,1,1,1,1,1,0,1]
         ],
         '#48f'
+    ],
+    tr: [
+        [
+            [0,1,1,1,0,0,0,0],
+            [0,1,1,1,0,0,0,0],
+            [0,0,1,0,0,0,0,0],
+            [1,1,1,1,1,0,0,0],
+            [0,0,1,0,0,0,0,0],
+            [0,0,1,1,1,1,1,1],
+            [0,0,1,0,0,0,0,0],
+            [0,1,0,1,0,0,0,0]
+        ],
+        [
+            [0,1,1,1,0,0,0,0],
+            [0,1,1,1,0,0,0,0],
+            [0,0,1,0,0,0,0,0],
+            [1,1,1,1,1,0,0,0],
+            [0,0,1,0,0,0,0,0],
+            [0,0,1,1,1,1,1,1],
+            [0,0,1,0,0,0,0,0],
+            [0,1,0,1,0,0,0,0]
+        ],
+        [
+            [0,1,1,1,0,0,0,0],
+            [0,1,1,1,0,0,0,0],
+            [0,0,1,0,0,0,0,0],
+            [1,1,1,1,1,0,0,0],
+            [0,0,1,0,0,0,0,0],
+            [0,0,1,1,1,1,1,1],
+            [0,0,1,0,0,0,0,0],
+            [0,1,0,1,0,0,0,0]
+        ],
+        [
+            [0,1,1,1,0,0,0,0],
+            [0,1,1,1,0,0,0,0],
+            [0,0,1,0,0,0,0,0],
+            [1,1,1,1,1,0,0,0],
+            [0,0,1,0,0,0,0,0],
+            [0,0,1,1,1,1,1,1],
+            [0,0,1,0,0,0,0,0],
+            [0,1,0,1,0,0,0,0]
+        ],
+        '#ff0'
     ]
 }
 
@@ -507,7 +550,7 @@ let usable_pieces = [p.square, p.line, p.t, p.l, p.j, p.s, p.z];
 if (enable_ap)
     usable_pieces.push(ap.j, ap.c, ap.john, ap.gerald, ap.dia, ap.evo);
 if (enabled_bp)
-    usable_pieces.push(bp.amongus, bp.face, bp.space, bp.maze);
+    usable_pieces.push(bp.amongus, bp.face, bp.space, bp.maze, bp.tr);
 //usable_pieces = [bp.maze];
 //usable_pieces = [ap.evo];
 let current_piece = new Piece(0, 0, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options);
