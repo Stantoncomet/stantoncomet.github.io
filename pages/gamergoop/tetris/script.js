@@ -1,5 +1,6 @@
 let enable_ap = true; //abstract pieces
 let enable_old_school = true; //no ghost, next, hold, etc.
+let enabled_bp = true; //hell peices (8x8, bigger board recomended)
 
 function toggleOldSchool() {
     let nxt_canvas = document.getElementById('next');
@@ -32,8 +33,8 @@ const height = canvas.height;
 let nxt_canvas = document.getElementById('next');
 let nxt_ctx = nxt_canvas.getContext("2d");
 //HELD canvas
-let hld_canvas = document.getElementById('held');
-let hld_ctx = hld_canvas.getContext("2d");
+// let hld_canvas = document.getElementById('held');
+// let hld_ctx = hld_canvas.getContext("2d");
 
 const u = width/10;
 const bw = width/u
@@ -330,7 +331,174 @@ const ap = {
         ],
         '#fff'
     ],
+
     
+}
+
+const bp = {
+    amongus: [
+        [
+            [1,1,1],
+            [0,0,1],
+            [1,1,1,1],
+            [1,1,1,1],
+            [1,0,1]
+        ],
+        [
+            [1,0,0,0,1,0,1],
+            [0,1,1,0,1,0,1],
+            [0,0,0,1,1,1,1],
+            [0,1,1,1,1,1],
+            [0,1,0,1]
+        ],        
+        [
+            [0,0,0,1,1,0,0,1],
+            [0,1],
+            [0,1,0,0,0,1,0,1],
+            [0,0,0,0,0,0,1],
+            [1,0,1,0,1,1,1,1],
+            [0,1,0,0,1,1,1,1],
+            [1,1,1,0,0,1,0,0],
+            [1,0,1,0,0,1,1,1],
+        ],        
+        [
+            [1,0,0,0,1,0,1],
+            [0,1,1,0,1,0,1],
+            [0,0,0,1,1,1,1],
+            [0,1,1,1,1,1],
+            [0,1,0,1]
+        ],
+        '#f00'
+    ],
+    face: [
+        [
+            [0,0,1,0,0,1,0,0],
+            [0,0,1,0,0,1,0,0],
+            [0,0,1,0,0,1,0,0],
+            [0,0,0,0,0,0,0,0],
+            [1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,1],
+            [0,1,0,0,0,0,1,0],
+            [0,0,1,1,1,1,0,0]
+        ],
+        [
+            [0,0,1,0,0,1,0,0],
+            [0,0,1,0,0,1,0,0],
+            [0,0,1,0,0,1,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,1,1,1,0,0],
+            [0,1,0,0,0,0,1,0],
+            [1,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,1,1]
+        ],        
+        [
+            [0,0,1,0,0,1,0,0],
+            [0,0,1,0,0,1,0,0],
+            [0,0,1,0,0,1,0,0],
+            [0,0,0,0,0,0,0,0],
+            [1,1,1,1,1,1,1,1],
+            [1,0,0,0,0,0,0,1],
+            [0,1,0,0,0,0,1,0],
+            [0,0,1,1,1,1,0,0]
+        ],        
+        [
+            [0,0,1,0,0,1,0,0],
+            [0,0,1,0,0,1,0,0],
+            [0,0,1,0,0,1,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,1,1,1,0,0],
+            [0,1,0,0,0,0,1,0],
+            [1,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,1,1]
+        ],
+        '#f0f'
+    ],
+    space: [
+        [
+            [1,1,0,0,1,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,0,0,0,1,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,1,1],
+            [1,0,0,0,1,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,1,0,0,0,1]
+        ],
+        [
+            [1,1,0,0,1,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,0,0,0,1,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,1,1],
+            [1,0,0,0,1,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,1,0,0,0,1]
+        ],
+        [
+            [1,1,0,0,1,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,0,0,0,1,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,1,1],
+            [1,0,0,0,1,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,1,0,0,0,1]
+        ],
+        [
+            [1,1,0,0,1,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,0,0,0,1,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,1,1],
+            [1,0,0,0,1,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,1,0,0,0,1]
+        ],
+        '#0ff'
+    ],
+    maze: [
+        [
+            [0,1,1,1,1,1,1,1],
+            [0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,0,1],
+            [1,0,0,0,0,0,0,1],
+            [1,1,0,1,1,1,1,1],
+            [1,1,0,0,0,0,0,1],
+            [1,1,1,1,1,1,0,1],
+            [1,1,1,1,1,1,0,1]
+        ],
+        [
+            [0,1,1,1,1,1,1,1],
+            [0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,0,1],
+            [1,0,0,0,0,0,0,1],
+            [1,1,0,1,1,1,1,1],
+            [1,1,0,0,0,0,0,1],
+            [1,1,1,1,1,1,0,1],
+            [1,1,1,1,1,1,0,1]
+        ],
+        [
+            [0,1,1,1,1,1,1,1],
+            [0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,0,1],
+            [1,0,0,0,0,0,0,1],
+            [1,1,0,1,1,1,1,1],
+            [1,1,0,0,0,0,0,1],
+            [1,1,1,1,1,1,0,1],
+            [1,1,1,1,1,1,0,1]
+        ],
+        [
+            [0,1,1,1,1,1,1,1],
+            [0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,0,1],
+            [1,0,0,0,0,0,0,1],
+            [1,1,0,1,1,1,1,1],
+            [1,1,0,0,0,0,0,1],
+            [1,1,1,1,1,1,0,1],
+            [1,1,1,1,1,1,0,1]
+        ],
+        '#48f'
+    ]
 }
 
 
@@ -338,8 +506,11 @@ const ap = {
 let usable_pieces = [p.square, p.line, p.t, p.l, p.j, p.s, p.z];
 if (enable_ap)
     usable_pieces.push(ap.j, ap.c, ap.john, ap.gerald, ap.dia, ap.evo);
+if (enabled_bp)
+    usable_pieces.push(bp.amongus, bp.face, bp.space, bp.maze);
+//usable_pieces = [bp.maze];
 //usable_pieces = [ap.evo];
-let current_piece = new Piece(4, 0, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options);
+let current_piece = new Piece(0, 0, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options);
 //current_piece = new Piece(4, 0, ap.c, 0, piece_options);
 console.log(current_piece);
 
@@ -365,7 +536,7 @@ const fps = 60;
 setInterval(draw, 1000/fps);
 //do the drop thing thing
 let droprate = 2; //drops per second
-setInterval(logic, 1000/droprate);
+let dropID = setTimeout(logic, 1000/droprate);
 
 
 //draw every frame
@@ -420,15 +591,10 @@ function draw() {
 
 //game logic
 function logic() {
-    if (current_piece.checkFuture()) {
-        current_piece.set();
-        board = current_piece.updateBoard();
-        nextPiece();
-        //dropSound.play();
-    }
-    current_piece.drop();
+    dropNCheck()
 
     checkClear();
+    dropID = setTimeout(logic, 1000/droprate);
 
 }
 //key presses
@@ -440,14 +606,10 @@ document.addEventListener('keydown', evt => {
                 current_piece.rotate(-1);
             break;
         }
-        case 'ArrowDown':
-        case ' ': {
-            current_piece.hardDrop();
-            current_piece.set();
-            board = current_piece.updateBoard();
-            nextPiece()
-            checkClear();
-            //dropSound.play();
+        case 'ArrowDown': {
+            if (droprate == 2)
+                dropNCheck()
+            droprate = 30;
             break;
         }
         case 'ArrowLeft': {
@@ -462,12 +624,27 @@ document.addEventListener('keydown', evt => {
                 current_piece.move(-1);
             break;
         }
-        case 'ArrowDown': {
-            console.log("drop");
+        case ' ': {
+            current_piece.hardDrop();
+            current_piece.set();
+            board = current_piece.updateBoard();
+            nextPiece()
+            checkClear();
+            //dropSound.play();
             break;
         }
         case 'c': {
             console.log("hold");
+            break;
+        }
+    }
+})
+
+document.addEventListener('keyup', evt => {
+    switch (evt.key) {
+        case 'ArrowDown': {
+            droprate = 2;
+            console.log(droprate)
             break;
         }
     }
@@ -507,14 +684,29 @@ function drawFallen() {
 function nextPiece() {
     current_piece = next_pieces[0];
     current_piece.ctx = ctx;
-    current_piece.x = 4;
+    current_piece.x = 0;
     current_piece.y = 0;
+    if (current_piece.checkOverlap()) {
+        clearTimeout(dropID);
+        document.getElementById('status').innerHTML = "GAME OVER";
+    }
+
     next_pieces.shift();
     next_pieces.push(new Piece(0, (next_pieces.length+1)*4+1, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options));
     next_pieces[next_pieces.length-1].ctx = nxt_ctx;
     next_pieces.forEach(piece => {
         piece.y-=4;
     })
+}
+
+function dropNCheck() {
+    if (current_piece.checkFuture()) {
+        current_piece.set();
+        board = current_piece.updateBoard();
+        nextPiece();
+        //dropSound.play();
+    }
+    current_piece.drop();
 }
 
 })
