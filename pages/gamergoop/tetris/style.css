@@ -24,8 +24,8 @@ body {
 }
 
 #gamefield {
-    width: 600px;
-    height: 1200px;
+    width: 300px;   
+    height: 600px;
 }
 #held {
     width: 120px;

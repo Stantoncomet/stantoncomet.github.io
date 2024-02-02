@@ -159,7 +159,7 @@ class Piece {
         let x = this.x;
         let y = this.y;
         
-        this.ctx.fillStyle = '#999';
+        this.ctx.fillStyle = piece[4];
         piece = piece[this.rot];
 
         for (let i=0; i<this.board.h; i++) {
@@ -179,6 +179,7 @@ class Piece {
                 this.ctx.fillRect(x+cx,y+cy,this.u,this.u);
             })
         });
+        
     }
 
     rotate(val) {

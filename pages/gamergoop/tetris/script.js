@@ -41,6 +41,8 @@ const bw = width/u
 const bh = height/u
 let board = Array(bw*bh).fill(0);
 
+const piece_width = 8;
+
 const piece_options = {
     ctx: ctx,
     u: u,
@@ -562,7 +564,7 @@ console.log(current_piece);
 
 let next_pieces = []
 for (let i=0; i<3; i++) {
-    next_pieces.push(new Piece(0, i*4+1, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options));
+    next_pieces.push(new Piece(0, i*piece_width+1, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options));
     next_pieces[i].ctx = nxt_ctx;
 }
 
@@ -602,8 +604,12 @@ function draw() {
     }
     
     //ghost piece
-    if (!enable_old_school) 
+    if (!enable_old_school) {
+        ctx.globalAlpha = 0.5;
         current_piece.drawGhost();
+        ctx.globalAlpha = 1.0;
+    }
+        
 
     //current piece
     current_piece.draw();
@@ -704,7 +710,10 @@ function checkClear() {
         if (line.indexOf(0) > -1) {
             board = board.concat(line);
         } else {
-            board = [0,0,0,0,0,0,0,0,0,0].concat(board);
+            let empty_row = [];
+            for (let i=0; i<bw; i++)
+                empty_row.push(0);
+            board = empty_row.concat(board);
         }
     })
     current_piece.pushBoard(board);
@@ -735,10 +744,10 @@ function nextPiece() {
     }
 
     next_pieces.shift();
-    next_pieces.push(new Piece(0, (next_pieces.length+1)*4+1, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options));
+    next_pieces.push(new Piece(0, (next_pieces.length+1)*piece_width+1, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options));
     next_pieces[next_pieces.length-1].ctx = nxt_ctx;
     next_pieces.forEach(piece => {
-        piece.y-=4;
+        piece.y-=piece_width;
     })
 }
 
