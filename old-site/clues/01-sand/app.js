@@ -46,5 +46,6 @@ function convert() {
     document.getElementById('piece').innerHTML += "<br>["+csquares.slice(80, 95)+"],";
     document.getElementById('piece').innerHTML += "<br>["+csquares.slice(96, 111)+"],";
     document.getElementById('piece').innerHTML += "<br>["+csquares.slice(112, 127)+"]";
+    document.getElementById('piece').innerHTML += "<br><a href='../../../pages/gamergoop/tetris'>Back to tetris</a>"
     console.log(acsquares);
 }
