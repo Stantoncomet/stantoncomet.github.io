@@ -1,21 +1,11 @@
 let enable_ap = true; //abstract pieces
 let enable_old_school = false; //no ghost, next, hold, etc.
-let enabled_bp = true; //hell peices (8x8, bigger board recomended)
+let enable_bp = false; //hell peices (8x8, bigger board recomended)
 
-function toggleOldSchool() {
-    let nxt_canvas = document.getElementById('next');
-    let hld_canvas = document.getElementById('held');
-    enable_old_school = !enable_old_school;
-    if (enable_old_school) {
-        nxt_canvas.style.visibility = 'hidden';
-        hld_canvas.style.visibility = 'hidden';
-    } else {
-        nxt_canvas.style.visibility = 'visible';
-        hld_canvas.style.visibility = 'visible';
-    }
+function setButtonState(button_id, state) {
+    document.getElementById(button_id).classList.remove('enabled', 'disabled');
+    document.getElementById(button_id).classList.add(state);
 }
-
-
 
 
 document.addEventListener('DOMContentLoaded', e => {
@@ -35,12 +25,12 @@ let nxt_ctx = nxt_canvas.getContext("2d");
 let hld_canvas = document.getElementById('held');
 let hld_ctx = hld_canvas.getContext("2d");
 
-const u = width/20;
-const bw = width/u
-const bh = height/u
+let u = width/10;
+let bw = width/u
+let bh = height/u
 let board = Array(bw*bh).fill(0);
 
-const piece_width = 8;
+let piece_width = 4;
 
 let piece_options = {
     ctx: ctx,
@@ -548,11 +538,14 @@ const bp = {
 var game_status = 0;
 
 //make current piece
-let usable_pieces = [p.square, p.line, p.t, p.l, p.j, p.s, p.z];
+let usable_pieces = {};
+for (let adding in p) usable_pieces[adding] = p[adding];
+console.log(randomPiece());
+
 if (enable_ap)
-    usable_pieces.push(ap.j, ap.c, ap.john, ap.gerald, ap.dia, ap.evo);
-if (enabled_bp)
-    usable_pieces.push(bp.amongus, bp.face, bp.space, bp.maze, bp.tr);
+    for (let adding in ap) usable_pieces[adding] = ap[adding];
+if (enable_bp)
+    for (let adding in bp) usable_pieces[adding] = bp[adding];
 //usable_pieces = [bp.maze];
 //usable_pieces = [ap.evo];
 let current_piece;
@@ -653,24 +646,81 @@ window.start = function () {
     game_status = 1;
     dropID = setTimeout(logic, 1000/droprate);
     for (let i=0; i<3; i++) {
-        next_pieces.push(new Piece(0, i*piece_width, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options));
+        next_pieces.push(new Piece(0, i*piece_width, randomPiece(), 0, piece_options));
         next_pieces[i].ctx = nxt_ctx;
     }
-    current_piece = new Piece(0, 0, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options);
+    current_piece = new Piece(0, 0, randomPiece(), 0, piece_options);
 
 }
 //reset game board
 window.resetGame = function () {
+    bw = width/u;
+    bh = height/u;
     clearTimeout(dropID);
     game_status = 0;
     board = Array(bw*bh).fill(0);
-    piece_options.board.b = board;
+    piece_options = {
+        ctx: ctx,
+        u: u,
+        board: {
+            w: bw,
+            h: bh,
+            b: board
+        }
+    }
     next_pieces = [];
     held_piece = undefined;
     start();
 
 }
+//toggles
 
+window.toggleOldSchool = function () {
+    enable_old_school = !enable_old_school;
+    if (enable_old_school) {
+        nxt_canvas.style.visibility = 'hidden';
+        hld_canvas.style.visibility = 'hidden';
+        setButtonState('OSBtn', 'enabled');
+    } else {
+        nxt_canvas.style.visibility = 'visible';
+        hld_canvas.style.visibility = 'visible';
+        setButtonState('OSBtn', 'disabled');
+    }
+}
+window.toggleAP = function () {
+    enable_ap = !enable_ap;
+    if (enable_ap) {
+        setButtonState('APBtn', 'enabled');
+        for (let adding in ap) usable_pieces[adding] = ap[adding];
+    } else {
+        for (let adding in ap) delete usable_pieces[adding];
+        setButtonState('APBtn', 'disabled');
+    }
+}
+window.toggleHell = function () {
+    enable_bp = !enable_bp;
+    if (enable_bp) {
+        setButtonState('HBtn', 'enabled');
+        for (let adding in bp) usable_pieces[adding] = bp[adding];
+        console.log(usable_pieces)
+    } else {
+        setButtonState('HBtn', 'disabled');
+        for (let adding in bp) delete usable_pieces[adding];
+    }
+}
+window.toggleBigBoard = function () {
+    if (u == width/10) {
+        u = width/20;
+        piece_width = 8;
+        setButtonState('BBtn', 'enabled');
+    } else {
+        u = width/10;
+        piece_width = 4;
+        setButtonState('BBtn', 'disabled');
+    }
+    resetGame();
+
+}
 
 //key presses
 document.addEventListener('keydown', evt => {
@@ -754,6 +804,11 @@ document.addEventListener('keyup', evt => {
     }
 })
 
+function randomPiece() {
+    let keys = Object.keys(usable_pieces);
+    return usable_pieces[keys[ keys.length * Math.random() << 0]];
+}
+
 function checkClear() {
     //line clear
     let lines = [];
@@ -791,13 +846,13 @@ function drawFallen() {
 function nextPiece() {
     current_piece = next_pieces[0];
     current_piece.ctx = ctx;
-    current_piece.x = 0;
+    current_piece.x = piece_width*1.25 << 0;
     current_piece.y = 0;
     if (current_piece.checkOverlap())
         endGame();
 
     next_pieces.shift();
-    next_pieces.push(new Piece(0, (next_pieces.length+1)*piece_width, usable_pieces[Math.floor(Math.random()*usable_pieces.length)], 0, piece_options));
+    next_pieces.push(new Piece(0, (next_pieces.length+1)*piece_width, randomPiece(), 0, piece_options));
     next_pieces[next_pieces.length-1].ctx = nxt_ctx;
     next_pieces.forEach(piece => {
         piece.y-=piece_width;
@@ -819,6 +874,8 @@ function endGame() {
     game_status = 2;
     //document.getElementById('status').innerHTML = "GAME OVER";
 }
+
+
 
 })
 

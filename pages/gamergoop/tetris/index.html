@@ -22,13 +22,21 @@
                 <div id="start">
                     <button onclick="start()" id="start-btn">PLAY</button>
                 </div>
-                <div id="options" class="window">
+                <div class="options window">
                     <p>Options</p>
-                    <div id="touchies">
-                        <button onclick="toggleOldSchool()">toggle old school mode</button>
-                        <button onclick="resetGame()">reset</button>
+                    <div class="touchies">
+                        <button onclick="resetGame()">Reset</button>
                         <button onclick="test()">test button</button>
-                        <button onclick="location.href='../../../old-site/clues/01-sand'">⇱ piece maker</button>
+                        <button onclick="location.href='../../../old-site/clues/01-sand'">⇱ Sand</button>
+                    </div>
+                </div>
+                <div class="options window">
+                    <p>Gamerule Dashboard</p>
+                    <div class="touchies">
+                        <button onclick="toggleOldSchool()" class="disabled" id="OSBtn">Old School Mode</button>
+                        <button onclick="toggleAP()" class="enabled" id="APBtn">Odd Pieces</button>
+                        <button onclick="toggleHell()" class="disabled" id="HBtn">Hell Pieces</button>
+                        <button onclick="toggleBigBoard()" class="disabled" id="BBtn" style="margin-top: 10px;">Huge Board</button>
                     </div>
                 </div>
             </div>

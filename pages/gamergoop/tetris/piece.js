@@ -53,7 +53,7 @@ class Piece {
             if (!Array.isArray(line)) return;
             line.forEach((cell, cx) => {
                 if (!cell) return;
-                if (x+cx > 19 || x+cx < 0)
+                if (x+cx > this.board.w-1 || x+cx < 0)
                     oe = true;
             })
         });
@@ -81,7 +81,7 @@ class Piece {
                 if (!cell) return;
                 const board_pos = (y*bw)+(cy*bw)+(x+cx);
                 const future_pos = board_pos+bw;
-                if (future_pos >= 800) 
+                if (future_pos >= bw*bh) 
                     oob = true;
 
                 if (this.board.b[future_pos]) //if board pos is not "0"
@@ -110,7 +110,7 @@ class Piece {
                 if (!cell) return;
                 const board_pos = (y*bw)+(cy*bw)+(x+cx);
                 const future_pos = board_pos+bw;
-                if (future_pos >= 800) 
+                if (future_pos >= bw*bh) 
                     oob = true;
 
                 if (this.board.b[future_pos])
