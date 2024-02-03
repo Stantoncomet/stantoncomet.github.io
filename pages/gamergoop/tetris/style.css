@@ -1,7 +1,10 @@
 body {
-    background-image: linear-gradient(to bottom, rgb(22, 22, 22), rgb(54, 54, 54));
+    /* background-image: url('tetrisbckground.jpg');
+    background-size: 100% 100%; */
+    background-color: rgb(4, 1, 11);
     margin: 0px;
     height: 100vh;
+    display: block;
 }
 
 #main {
@@ -13,27 +16,81 @@ body {
     justify-content: center;
 }
 
+#banner {
+    width: 100%;
+    height: 5vh;
+    visibility: hidden;
+}
+
 .window {
     border-style: solid;
     border-color: black;
     border-width: 3px;
-    background-image: linear-gradient(to bottom, rgb(81, 67, 55), rgb(50, 52, 71));
+    /* background-image: linear-gradient(to bottom, rgb(81, 67, 55), rgb(50, 52, 71)); */
+    background-color: rgb(50, 52, 71);
     margin: 10px;
     margin-top: 2%;
     
 }
 
 #gamefield {
-    width: 300px;   
-    height: 600px;
+    /* width: 300px;   
+    height: 600px; */
+    width: 40vh;
+    height: 80vh;
 }
 #held {
-    width: 120px;
-    height: 120px;
+    /* width: 120px;
+    height: 120px; */
+    width: 16vh;
+    height: 16vh;
     border-color: black;
 }
 #next {
-    width: 120px;
-    height: 360px;
+    /* width: 120px;
+    height: 360px; */
+    width: 16vh;
+    height: 48vh;
     border-color: black;
+}
+
+
+#options {
+    padding-bottom: 50px;
+    width: 16vh;
+}
+#touchies {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+#touchies * {
+    flex: 1;
+    border-style: dashed;
+    border-width: 1px;
+}
+
+p {
+    color:aliceblue;
+}
+
+button {
+    color: white;
+    background-color: slategray;
+    border-style: solid;
+    border-color: rgb(47, 132, 207);
+    border: 4px;
+}
+
+button:hover {
+    background-color: aqua;
+    color: slategray;
+}
+button:active {
+    background-color: rgb(163, 255, 255);
+}
+
+#start-btn {
+    padding: 10px;
+
 }

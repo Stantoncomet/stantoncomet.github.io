@@ -15,13 +15,32 @@
 
     </head>
     <body>
+        <img src="tetrisbanner.jpg" id="banner">
         <div id="main">
-            <!-- <canvas width="120" height="120" id="held" class="window"></canvas> -->
-            <canvas width="600" height="1200" id="gamefield" class="window"></canvas>
-            <canvas width="240" height="720" id="next" class="window"></canvas>
+            <div id="left">
+                <canvas width="240" height="240" id="held" class="window"></canvas>
+                <div id="start">
+                    <button onclick="start()" id="start-btn">PLAY</button>
+                </div>
+                <div id="options" class="window">
+                    <p>Options</p>
+                    <div id="touchies">
+                        <button onclick="toggleOldSchool()">toggle old school mode</button>
+                        <button onclick="resetGame()">reset</button>
+                        <button onclick="test()">test button</button>
+                    </div>
+                </div>
+            </div>
+            <div id="middle">
+                <canvas width="600" height="1200" id="gamefield" class="window"></canvas>
+            </div>
+            <div id="right">
+                <canvas width="240" height="720" id="next" class="window"></canvas>
+            </div>
+            
         </div>
-        <p id="status"></p>
-        <button onclick="toggleOldSchool()">toggle old school mode</button>
-        <button onclick="location.reload()">reset</button>
+        
+
+
     </body>
 <html>

@@ -7,6 +7,7 @@ class Piece {
         this.ctx = options.ctx;
         this.u = options.u;
         this.board = options.board;
+        this.held = false;
     }
 
     move(distance) {
@@ -136,7 +137,7 @@ class Piece {
             line.forEach((cell, cx) => {
                 if (!cell) return;
                 const board_pos = (y*bw)+(cy*bw)+(x+cx);
-                    this.board.b[board_pos] = this.piece[4];
+                this.board.b[board_pos] = this.piece[4];
             })
         })
     }
