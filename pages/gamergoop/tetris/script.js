@@ -634,7 +634,7 @@ function logic() {
     dropNCheck()
 
     checkClear();
-    if (game_status) //if game is not over
+    if (game_status == 1) //if game is not over
         dropID = setTimeout(logic, 1000/droprate);
 
 }
@@ -870,6 +870,7 @@ function dropNCheck() {
 }
 
 function endGame() {
+    console.log("Game End")
     clearTimeout(dropID);
     game_status = 2;
     //document.getElementById('status').innerHTML = "GAME OVER";
