@@ -204,7 +204,7 @@ const p = {
 }
 //abstract pieces
 const ap = {
-    j: [
+    corner: [
         [
             [1,1],
             [1]
@@ -546,18 +546,15 @@ let s_score = "00000";
 //make current piece
 let usable_pieces = {};
 for (let adding in p) usable_pieces[adding] = p[adding];
-console.log(randomPiece());
+
 
 if (enable_ap)
     for (let adding in ap) usable_pieces[adding] = ap[adding];
 if (enable_bp)
     for (let adding in bp) usable_pieces[adding] = bp[adding];
-//usable_pieces = [bp.maze];
-//usable_pieces = [ap.evo];
+
 let current_piece;
 let held_piece;
-//current_piece = new Piece(4, 0, ap.c, 0, piece_options);
-//console.log(current_piece);
 
 
 //next piece setup
@@ -706,10 +703,12 @@ window.toggleOldSchool = function () {
     }
 }
 window.toggleAP = function () {
+    console.log(usable_pieces);
     enable_ap = !enable_ap;
     if (enable_ap) {
         setButtonState('APBtn', 'enabled');
         for (let adding in ap) usable_pieces[adding] = ap[adding];
+        console.log(usable_pieces);
     } else {
         for (let adding in ap) delete usable_pieces[adding];
         setButtonState('APBtn', 'disabled');
@@ -720,7 +719,6 @@ window.toggleHell = function () {
     if (enable_bp) {
         setButtonState('HBtn', 'enabled');
         for (let adding in bp) usable_pieces[adding] = bp[adding];
-        console.log(usable_pieces)
     } else {
         setButtonState('HBtn', 'disabled');
         for (let adding in bp) delete usable_pieces[adding];
@@ -754,6 +752,7 @@ document.addEventListener('keydown', evt => {
             if (droprate == 2)
                 dropNCheck()
             droprate = 30;
+                
             break;
         }
         case 'ArrowLeft': {
@@ -813,7 +812,6 @@ document.addEventListener('keyup', evt => {
     switch (evt.key) {
         case 'ArrowDown': {
             droprate = 2;
-            console.log(droprate)
             break;
         }
         case ' ': {

@@ -64,7 +64,7 @@ class Piece {
     }
 
     //returns true if it will drop wrongly
-    checkFuture() {
+    checkFuture(sight = 1) {
         let piece = this.piece[this.rot];
         let x = this.x;
         let y = this.y;
@@ -80,7 +80,7 @@ class Piece {
             line.forEach((cell, cx) => {
                 if (!cell) return;
                 const board_pos = (y*bw)+(cy*bw)+(x+cx);
-                const future_pos = board_pos+bw;
+                const future_pos = board_pos+(bw*sight);
                 if (future_pos >= bw*bh) 
                     oob = true;
 
