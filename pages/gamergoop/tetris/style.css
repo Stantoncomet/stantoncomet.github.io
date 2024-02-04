@@ -28,8 +28,7 @@ body {
     border-width: 3px;
     /* background-image: linear-gradient(to bottom, rgb(81, 67, 55), rgb(50, 52, 71)); */
     background-color: rgb(50, 52, 71);
-    margin: 10px;
-    margin-top: 2%;
+    margin: 5% 10px;
     
 }
 
@@ -54,8 +53,22 @@ body {
     border-color: black;
 }
 
+#start {
+    margin: 10% auto;
+}
 #start-btn {
     padding: 10px;
+}
+
+#score-tab {
+    margin: 0px auto 15%;
+}
+#score-tab p {
+    margin: 0px;
+    font-size: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-style: double;
+    background-color: rgb(50, 52, 71);
 }
 
 .options {

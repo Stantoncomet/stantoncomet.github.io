@@ -18,6 +18,10 @@ let ctx = canvas.getContext("2d");
 const width = canvas.width;
 const height = canvas.height;
 
+//piece overlay
+window.piece_overlay = new Image();
+window.piece_overlay.src = 'piece.png';
+
 //NEXT canvas
 let nxt_canvas = document.getElementById('next');
 let nxt_ctx = nxt_canvas.getContext("2d");
@@ -535,7 +539,9 @@ const bp = {
     ]
 }
 
-var game_status = 0;
+let game_status = 0;
+let score = 0;
+let s_score = "00000";
 
 //make current piece
 let usable_pieces = {};
@@ -578,6 +584,8 @@ let dropID;
 //draw every frame
 function draw() {
     
+
+
     //background
     ctx.fillStyle = '#414';
     ctx.fillRect(0, 0, width, height);
@@ -627,6 +635,13 @@ function draw() {
             held_piece.draw();
     }
 
+    //SCORE
+    document.getElementById('score').innerText = s_score;
+    if (score >= 100) document.getElementById('score').style.color = '#7ff';
+    if (score >= 500) document.getElementById('score').style.color = '#ff7';
+    if (score >= 1000) document.getElementById('score').style.color = '#f7f';
+    if (score >= 10000) document.getElementById('score').style.color = '#f77';
+
 }
 
 //game logic
@@ -649,7 +664,7 @@ window.start = function () {
         next_pieces.push(new Piece(0, i*piece_width, randomPiece(), 0, piece_options));
         next_pieces[i].ctx = nxt_ctx;
     }
-    current_piece = new Piece(0, 0, randomPiece(), 0, piece_options);
+    current_piece = new Piece(piece_width*0.75 << 0, 0, randomPiece(), 0, piece_options);
 
 }
 //reset game board
@@ -658,6 +673,9 @@ window.resetGame = function () {
     bh = height/u;
     clearTimeout(dropID);
     game_status = 0;
+    score = 0;
+    s_score = "00000";
+    document.getElementById('score').style.color = '#fff';
     board = Array(bw*bh).fill(0);
     piece_options = {
         ctx: ctx,
@@ -776,6 +794,7 @@ document.addEventListener('keydown', evt => {
                 held_piece.held = true;
                 current_piece = trans_piece;
                 current_piece.ctx = ctx;
+                current_piece.x = piece_width*1.25 << 0;
             } else {
                 held_piece = current_piece;
                 held_piece.ctx = hld_ctx;
@@ -811,6 +830,7 @@ function randomPiece() {
 
 function checkClear() {
     //line clear
+    let lines_cleared = 0;
     let lines = [];
     for (let i=0; i<bh; i++) {
         lines.push(board.slice(i*bw, (i+1)*bw));
@@ -824,8 +844,12 @@ function checkClear() {
             for (let i=0; i<bw; i++)
                 empty_row.push(0);
             board = empty_row.concat(board);
+            lines_cleared++;
         }
     })
+    addScore(lines_cleared*50);
+    if (lines_cleared >= 4) addScore(100);
+
     current_piece.pushBoard(board);
     drawFallen();
 }
@@ -840,6 +864,7 @@ function drawFallen() {
         ctx.fillStyle = cell; //board shows filled pieces as their colors
         //ctx.fillStyle = '#fff';
         ctx.fillRect(cx, cy, u, u);
+        ctx.drawImage(window.piece_overlay, cx, cy, u, u);
     })
 }
 
@@ -856,7 +881,9 @@ function nextPiece() {
     next_pieces[next_pieces.length-1].ctx = nxt_ctx;
     next_pieces.forEach(piece => {
         piece.y-=piece_width;
-    })
+    });
+
+    addScore(10);
 }
 
 function dropNCheck() {
@@ -874,6 +901,14 @@ function endGame() {
     clearTimeout(dropID);
     game_status = 2;
     //document.getElementById('status').innerHTML = "GAME OVER";
+}
+
+function addScore(value) {
+    score += value;
+    s_score = "";
+    let placeholders = 5 - score.toString().length;
+    for (let i=0; i<placeholders; i++) s_score += "0";
+    s_score += score;
 }
 
 

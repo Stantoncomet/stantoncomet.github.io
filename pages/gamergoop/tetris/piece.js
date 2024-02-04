@@ -178,6 +178,7 @@ class Piece {
                 if (!cell) return; //if cell is "0", it won't draw anyting
                 cx*=this.u;
                 this.ctx.fillRect(x+cx,y+cy,this.u,this.u);
+                this.ctx.drawImage(window.piece_overlay, x+cx,y+cy,this.u,this.u);
             })
         });
         
@@ -208,6 +209,7 @@ class Piece {
                 if (!cell) return; //if cell is "0", it won't draw anyting
                 cx*=this.u;
                 this.ctx.fillRect(x+cx,y+cy,this.u,this.u);
+                this.ctx.drawImage(window.piece_overlay, x+cx,y+cy,this.u,this.u);
             })
         });
     }
