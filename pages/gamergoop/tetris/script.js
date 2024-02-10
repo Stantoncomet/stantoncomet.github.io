@@ -512,7 +512,9 @@ const bp = {
             [1,1,1,1,1,1,0,1]
         ],
         '#48f'
-    ],
+    ]
+}
+const nonos = {
     tr: [
         [
             [0,1,1,1,0,0,0,0],
@@ -557,6 +559,7 @@ const bp = {
         '#ff0'
     ]
 }
+
 
 let game_status = 0;
 let score = 0;
