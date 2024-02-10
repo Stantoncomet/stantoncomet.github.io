@@ -105,6 +105,14 @@ button.disabled {
     color: white;
     background-color: slategray;
 }
+button.selected {
+    color: white;
+    background-color: rgb(59, 85, 231);
+}
+button.unselected {
+    color: white;
+    background-color: slategray;
+}
 
 button:hover {
     background-color: aqua;

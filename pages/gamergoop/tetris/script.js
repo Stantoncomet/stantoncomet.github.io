@@ -2,15 +2,34 @@ let enable_ap = true; //abstract pieces
 let enable_old_school = false; //no ghost, next, hold, etc.
 let enable_bp = false; //hell peices (8x8, bigger board recomended)
 
-function setButtonState(button_id, state) {
+function setButtonState(button_id, state, menu_class = undefined) {
+    if (menu_class) {
+        for (let item of document.getElementsByClassName(menu_class)) {
+            item.classList.remove('selected');
+            item.classList.remove('unselected');
+        }
+    }
     document.getElementById(button_id).classList.remove('enabled', 'disabled');
     document.getElementById(button_id).classList.add(state);
 }
 
 
 document.addEventListener('DOMContentLoaded', e => {
-let dropSound = new Audio('drop.mp3');
-//dropSound.play();
+let ost = new Audio('mewmewsong.mp3');
+ost.volume = 0.3;
+let ost_hell = new Audio('mewmewsong_hell.mp3');
+ost_hell.volume = 0;
+let drop_fx = new Audio('drop.wav');
+drop_fx.volume = 0.4;
+let clear_fx = new Audio('clear.wav');
+clear_fx.volume = 0.4;
+let clear_alt_fx = new Audio('clear_alt.wav');
+clear_alt_fx.volume = 0.4;
+let end_fx = new Audio('game_end.wav');
+end_fx.volume = 0.6;
+
+
+
 
 
 let canvas = document.getElementById('gamefield');  
@@ -596,7 +615,7 @@ function draw() {
     for (let i=0; i<bw; i++) {
         for (let j=0; j<bh; j++) {
             ctx.fillStyle = '#000';
-            ctx.fillRect(i*u+1, j*u+1, u-2*1, u-2*1);
+            ctx.fillRect(i*u+2, j*u+2, u-4*1, u-4*1);
             if (!enable_old_school) {
                 nxt_ctx.fillStyle = '#000';
                 nxt_ctx.fillRect(i*u+1, j*u+1, u-2*1, u-2*1);
@@ -637,7 +656,14 @@ function draw() {
     if (score >= 100) document.getElementById('score').style.color = '#7ff';
     if (score >= 500) document.getElementById('score').style.color = '#ff7';
     if (score >= 1000) document.getElementById('score').style.color = '#f7f';
+    if (score >= 5000) document.getElementById('score').style.color = '#77f';
     if (score >= 10000) document.getElementById('score').style.color = '#f77';
+
+    //MUSIC
+    if (ost.currentTime >= ost.duration) {
+        ost.play();
+        ost_hell.play();
+    } //reset music after its over
 
 }
 
@@ -662,10 +688,16 @@ window.start = function () {
         next_pieces[i].ctx = nxt_ctx;
     }
     current_piece = new Piece(piece_width*0.75 << 0, 0, randomPiece(), 0, piece_options);
+    ost.play();
+    ost_hell.play();
 
 }
 //reset game board
 window.resetGame = function () {
+    ost.pause();
+    ost.currentTime = 0;
+    ost_hell.pause();
+    ost_hell.currentTime = 0;
     bw = width/u;
     bh = height/u;
     clearTimeout(dropID);
@@ -719,24 +751,29 @@ window.toggleHell = function () {
     if (enable_bp) {
         setButtonState('HBtn', 'enabled');
         for (let adding in bp) usable_pieces[adding] = bp[adding];
+        ost_hell.volume = 0.2;
     } else {
         setButtonState('HBtn', 'disabled');
         for (let adding in bp) delete usable_pieces[adding];
+        ost_hell.volume = 0;
     }
 }
-window.toggleBigBoard = function () {
-    if (u == width/10) {
-        u = width/20;
-        piece_width = 8;
-        setButtonState('BBtn', 'enabled');
-    } else {
-        u = width/10;
-        piece_width = 4;
-        setButtonState('BBtn', 'disabled');
-    }
-    resetGame();
 
+
+//boards
+window.normieBoard = function () {
+    u = width/10;
+    piece_width = 4;
+    setButtonState('NBBtn', 'selected', 'one_menu');
+    resetGame();
 }
+window.bigBoard = function () {
+    u = width/20;
+    piece_width = 8;
+    setButtonState('BBBtn', 'selected', 'one_menu');
+    resetGame();
+}
+
 
 //key presses
 document.addEventListener('keydown', evt => {
@@ -846,7 +883,11 @@ function checkClear() {
         }
     })
     addScore(lines_cleared*50);
-    if (lines_cleared >= 4) addScore(100);
+    if (lines_cleared >= 4) {
+        addScore(100);
+        clear_alt_fx.play();
+    }
+    else if (lines_cleared >= 1) clear_fx.play();
 
     current_piece.pushBoard(board);
     drawFallen();
@@ -867,6 +908,7 @@ function drawFallen() {
 }
 
 function nextPiece() {
+    drop_fx.play();
     current_piece = next_pieces[0];
     current_piece.ctx = ctx;
     current_piece.x = piece_width*1.25 << 0;
@@ -898,6 +940,9 @@ function endGame() {
     console.log("Game End")
     clearTimeout(dropID);
     game_status = 2;
+    ost.pause();
+    ost.currentTime = 0;
+    end_fx.play();
     //document.getElementById('status').innerHTML = "GAME OVER";
 }
 

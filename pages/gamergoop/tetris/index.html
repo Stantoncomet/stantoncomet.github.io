@@ -29,6 +29,7 @@
                     <p>Options</p>
                     <div class="touchies">
                         <button onclick="resetGame()">Reset</button>
+                        <button onclick="muteOST()" class="disabled" id="MSBtn">Mute Music</button>
                         <button onclick="test()">test button</button>
                         <button onclick="location.href='../../../old-site/clues/01-sand'">⇱ Sand</button>
                     </div>
@@ -39,7 +40,6 @@
                         <button onclick="toggleOldSchool()" class="disabled" id="OSBtn">Old School Mode</button>
                         <button onclick="toggleAP()" class="enabled" id="APBtn">Odd Pieces</button>
                         <button onclick="toggleHell()" class="disabled" id="HBtn">Hell Pieces</button>
-                        <button onclick="toggleBigBoard()" class="disabled" id="BBtn" style="margin-top: 10px;">Huge Board</button>
                     </div>
                 </div>
             </div>
@@ -48,6 +48,13 @@
             </div>
             <div id="right">
                 <canvas width="240" height="720" id="next" class="window"></canvas>
+                <div class="options window">
+                    <p>Gameboard Dashboard</p>
+                    <div class="touchies">
+                        <button onclick="normieBoard()" class="selected one_menu" id="NBBtn" style="margin-top: 5px;">Normie Board</button>
+                        <button onclick="bigBoard()" class="unselected one_menu" id="BBBtn" style="margin-top: 5px;">Huge Board</button>
+                    </div>
+                </div>
             </div>
             
         </div>
