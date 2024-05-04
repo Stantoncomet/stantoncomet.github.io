@@ -15,8 +15,10 @@ h1, p, button {
     background-color: transparent;
     border-style: hidden;
 
-    width: 10vw;
-    height: 2vw;
+    width: 30vw;
+    height: 6vw;
+
+    font-size: 3vw;
 }
 .selected {
     background-color: gray !important;
