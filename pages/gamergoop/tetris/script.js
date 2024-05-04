@@ -15,18 +15,19 @@ function setButtonState(button_id, state, menu_class = undefined) {
 
 
 document.addEventListener('DOMContentLoaded', e => {
-let ost = new Audio('mewmewsong.mp3');
+
+let ost = new Audio('assets/sounds/mewmewsong.mp3');
 ost.volume = 0.3;
-let ost_hell = new Audio('mewmewsong_hell.mp3');
+let ost_hell = new Audio('assets/sounds/mewmewsong_hell.mp3');
 ost_hell.volume = 0;
-let drop_fx = new Audio('drop.wav');
+let drop_fx = new Audio('assets/sounds/drop.wav');
 drop_fx.volume = 0.4;
-let clear_fx = new Audio('clear.wav');
+let clear_fx = new Audio('assets/sounds/clear.wav');
 clear_fx.volume = 0.4;
-let clear_alt_fx = new Audio('clear_alt.wav');
+let clear_alt_fx = new Audio('assets/sounds/clear_alt.wav');
 clear_alt_fx.volume = 0.4;
-let end_fx = new Audio('game_end.wav');
-end_fx.volume = 0.6;
+let end_fx = new Audio('assets/sounds/game_end.wav');
+end_fx.volume = 1.0;
 
 
 
@@ -39,7 +40,7 @@ const height = canvas.height;
 
 //piece overlay
 window.piece_overlay = new Image();
-window.piece_overlay.src = 'piece.png';
+window.piece_overlay.src = 'assets/piece.png';
 
 //NEXT canvas
 let nxt_canvas = document.getElementById('next');
