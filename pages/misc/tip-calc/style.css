@@ -1,0 +1,85 @@
+@font-face {
+    font-family: Comic;
+    src: url("./COMIC.TTF") format("truetype");
+}
+
+@keyframes enter-top {
+    0% { top: -100%; }
+    25% { top: -50%; }
+    50% { top: -25%; }
+    75% { top: -12%; }
+    100% { top: 0%; }
+}
+
+* {
+    font-family: Comic;
+}
+
+html {
+    height: 100%
+}
+
+body {
+    /* background-image: url('./reciept.bmp'); */
+    background-repeat: no-repeat;
+    background-position: top;
+    display: flex;
+    margin: 0px;
+    justify-content: center;
+}
+
+
+#main {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    padding: 2px;
+    padding-bottom: 20px;
+
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 2px dashed black;
+
+    animation-name: enter-top;
+    animation-duration: 1s;
+}
+
+#main p {
+    margin: 0px;
+}
+
+#store {
+    margin: 10px;
+}
+
+#items {
+    margin: 20px;
+    list-style: none;
+    padding: 0px;
+
+    width: 60%;
+}
+
+#pre-calced {
+    margin-bottom: 10px;
+}
+
+#calculations {
+    margin: 10px;
+
+    width: 30%;
+}
+
+#answer {
+    font-family: Comic;
+    font-weight: bold;
+    border: hidden;
+}
+
+#answer:focus-visible {
+    outline-style: none;
+}

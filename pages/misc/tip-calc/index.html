@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
+        <!-- <link rel="shortcut icon" href="../../../favicon.png"> -->
+        <link rel="stylesheet" href="style.css">
+
+        <title>Tip Calculator</title>
+
+    </head>
+    <body>
+        <div id="main">
+            <div id="store">
+                <p>Tip Calculator</p>
+                <p>Developed by Stantoncomet</p>
+                <p>To help reduce stress when buying things</p>
+            </div>
+            <div id="datetime">
+                <p>*************************************************</p>
+                <p>DATE -- TIME</p>
+                <p>*************************************************</p>
+            </div>
+            <ul id="items">
+                <li><span style="float: left;">1 That's Tough</span><span style="float: right;">7.49</span></li>
+                <li><span style="float: left;">2 Flower Vase</span><span style="float: right;">32.09</span></li>
+                <li><span style="float: left;">1 That's Tough</span><span style="float: right;">7.49</span></li>
+            </ul>
+            <div id="pre-calced">
+                <p>SUB TOTAL <span id="sub-total">...</span></p>
+                <p>TAX (9%) <span id="sub-total">...</span></p>
+                <p>TOTAL DUE &nbsp; &nbsp; &nbsp; $<span id="total">50.43</span></p>
+            </div>
+            <div id="calculations">
+                <p><span style="float: left;">Tip</span><span style="float: right;"><input id="answer" type="text" size="6" style="text-align: right; border-bottom: solid 1px black"></span></p>
+                <p><span style="float: left;">Total</span><span style="float: right; border-bottom: solid 1px black; width:70px; text-align: right;" id="new-total">&nbsp;</span></p>
+            </div>
+
+
+            <!-- <p>Percent &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span id="percent" style="text-decoration: underline;">______</span></p> -->
+            <div id="footer">
+                <p>X _______________________</p>
+                <p>CUSTOMER SIGNATURE</p>
+                <p>I agree that I did my best when estimating the tip.</p>
+            </div>
+            <!-- <button onclick="checkAnswer()">Check</button> -->
+        </div>
+        
+    </body>
+
+    <!-- Down here so it runs after content is generated -->
+    <script src="script.js"></script>
+</html>
