@@ -11,6 +11,29 @@
     100% { top: 0%; }
 }
 
+@keyframes leave-top {
+    0% { top: 0%; }
+    25% { top: -12%; }
+    50% { top: -25%; }
+    75% { top: -50%; }
+    100% { top:-100%; }
+}
+
+@keyframes erase-answer {
+    0% {
+        text-decoration: line-through;
+        color: rgba(0, 0, 0, 1.0);
+    }
+    50% {
+        text-decoration: line-through;
+        color: rgba(0, 0, 0, 1.0);
+    }
+    100% {
+        text-decoration: line-through;
+        color: rgba(0, 0, 0, 0.0);
+    }
+}
+
 * {
     font-family: Comic;
 }
@@ -70,16 +93,14 @@ body {
 
 #calculations {
     margin: 10px;
+    list-style: none;
+    padding: 0px;
 
-    width: 30%;
+    width: 25%;
 }
 
 #answer {
-    font-family: Comic;
-    font-weight: bold;
-    border: hidden;
-}
+    text-align: right;
 
-#answer:focus-visible {
-    outline-style: none;
+    animation-duration: 1s;
 }
