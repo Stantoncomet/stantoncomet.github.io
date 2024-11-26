@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrect Odds!</title>
+    <!-- <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js" defer></script> -->
+    <script type="module" src="./firebase_init.js"></script>
+    <script type="module" src="./script.js"></script>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="toolbar">
+        <p id="user">Not logged in!</p>
+        <p>New? Register <a href="./register.html">here</a></p>
+    </div>
+    <div id="highscores">
+        <h1>High Scores</h1>
+        <h6>(not realy)</h6>
+        <p>1: </p>
+        <p>2: </p>
+        <p>3: </p>
+        <p>4: </p>
+        <p>5: </p>
+    </div>
+    <div>
+        <input id="login-key" placeholder="Login Key">
+        <button onclick="login()">Login</button>
+        <button onclick="save()">Save Data</button>
+        <button onclick="upMoney()">money++</button>
+    </div>
+</body>
+
+</html>
