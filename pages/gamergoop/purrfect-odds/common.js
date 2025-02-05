@@ -1,4 +1,5 @@
 async function getLatestData() {
+
     let data = await fetch('https://150.230.38.229:5000/odds_user_data')
         .then(response => response.json())
         .catch(err => {console.log(err); return 0})
