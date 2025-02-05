@@ -1,11 +1,11 @@
 async function getLatestData() {
-    let data = await fetch('http://150.230.38.229:5000/odds_user_data')
+    let data = await fetch('https://150.230.38.229:5000/odds_user_data')
         .then(response => response.json())
         .catch(err => {console.log(err); return 0})
     return data;
 }
 async function updateUserData(login_key, resource, value) {
-    let success = await fetch('http://150.230.38.229:5000/odds_user_data', {
+    let success = await fetch('https://150.230.38.229:5000/odds_user_data', {
         mode: "cors",
         method: "POST",
         headers: {
