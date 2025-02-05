@@ -1,8 +1,12 @@
-import {db, players_ref} from './firebase_init.js';
-import { ref, set, onValue } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js';
-
 var current_login = "";
 var login_data = {};
+var udata;
+
+
+onValue(players_ref, snapshot => {
+    udata = snapshot.val();
+})
+
 
 // set(players_ref, {
 //     userone: { name: "Userone", money: 0 }
@@ -14,14 +18,7 @@ function upMoney() {
         return
     }
     let curr_player_ref = ref(db, `players/${current_login}/money`);
-    let money = 0;
-    onValue(curr_player_ref, snapshot => {
-        let udata = snapshot.val();
-        money = udata+1;
-
-        
-
-    })
+    let money = udata+1;
     set(curr_player_ref, money);
 }
 

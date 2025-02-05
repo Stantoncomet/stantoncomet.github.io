@@ -1,0 +1,39 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: rgb(20,20,25);
+    color: aliceblue;
+}
+
+.link {
+    text-decoration: none;
+    border: purple solid 2px;
+    border-style: dashed;
+    padding: 0 5px;
+}
+
+
+@keyframes flash-error {
+    0% { opacity: 0.0; color: red; }
+    10% { opacity: 1.0; }
+    80% { opacity: 1.0; }
+    100% { opacity: 0.0; color: red; }
+}
+
+@keyframes flash-success {
+    0% { opacity: 0.0; }
+    10% { opacity: 1.0; }
+    80% { opacity: 1.0; }
+    100% { opacity: 0.0; }
+}
+
+#login-feedback {
+    color: lightgreen;
+    font-size: small;
+    opacity: 0.0;
+
+    /* animation-name: flash; */
+    animation-duration: 4s;
+}

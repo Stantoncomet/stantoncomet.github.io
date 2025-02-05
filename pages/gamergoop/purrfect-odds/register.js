@@ -1,34 +1,26 @@
-import {db, players_ref} from './firebase_init.js';
-import { ref, set, onValue } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js';
 
-function register() {
-    let cname = document.getElementById("name").value;
+
+async function register() {
+    let name = document.getElementById("name").value;
     let login_key = document.getElementById("login-key").value;
 
-    console.log(name)
-    console.log(login_key)
-
-    if (!cname || !login_key) {
-        console.log("missing input");
+    if (!name || !login_key) {
+        loginFeedback("All fields are required");
         return;
     }
     
-    let udata;
-    onValue(players_ref, snapshot => {
-        udata = snapshot.val();
-    })
-    if (udata[login_key]) {
-        console.log("user already exists");
+    let snapshot = getLatestData();
+    if (snapshot[login_key]) {
+        loginFeedback("User already exists ...ssssshh!");
         return;
     }
 
-    let new_player_ref = ref(db, `players/${login_key}`);
-    set(new_player_ref, {
-        name: `${cname}`,
-        money: 0
-    })
+    await updateUserData(login_key, 'name', name);
+    await updateUserData(login_key, 'balance', 1000);
 
-    document.location.href = "./index.html";
+    loginFeedback("Thanks, "+name+". Rerouting to home...", type='success');
+
+    setTimeout(document.location.href = "./index.html", 2000);
 }
 
 window.register = register;
