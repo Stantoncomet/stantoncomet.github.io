@@ -5,6 +5,15 @@
 body {
     background-color: rgb(20,20,25);
     color: aliceblue;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+}
+
+footer {
+    border-top: 1px solid rgb(63, 63, 63) ;
+    font-size: xx-small;
 }
 
 .link {
@@ -12,6 +21,14 @@ body {
     border: purple solid 2px;
     border-style: dashed;
     padding: 0 5px;
+}
+
+#user {
+    background-color: blueviolet;
+    padding: 3px;
+}
+#highscores {
+    text-align: left;
 }
 
 
@@ -37,3 +54,4 @@ body {
     /* animation-name: flash; */
     animation-duration: 4s;
 }
+

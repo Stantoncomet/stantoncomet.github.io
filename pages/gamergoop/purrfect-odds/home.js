@@ -21,7 +21,7 @@ async function login() {
     }
 
     loginFeedback("Welcome "+user_data.name, type='success');
-    document.getElementById("user").innerText = user_data.name+", &"+user_data.balance;
+    document.getElementById("user").innerText = user_data.name+", $"+user_data.balance;
 
     console.log(user_data);
     
@@ -35,7 +35,7 @@ async function updateHighScores() {
     highs.forEach((h, i) => {
         let user = snapshot[Object.keys(snapshot)[i]]
         if (user == undefined) return;
-        h.innerText = user.name+" ----> &"+user.balance;
+        h.innerText = user.name+" ----> $"+user.balance;
     })
 }
 
