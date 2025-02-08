@@ -1,34 +1,39 @@
-let current_login;
 
 
-async function login() {
+
+async function processLogin() {
+    let current_login;
     current_login = document.getElementById("login-key").value;
     document.getElementById("login-key").value = "";
     if (!current_login) {
-        loginFeedback("Please enter a login key");
+        inputFeedback("Please enter a login key");
         return;
     }
-
-    let snapshot = await getLatestData();
-    if (!snapshot) {
-        loginFeedback("An issue has occured out of your control");
-        return;
-    }
-    let user_data = snapshot[current_login];
-    if (!user_data) {
-        loginFeedback("User does not exist");
-        return;
-    }
-
-    loginFeedback("Welcome "+user_data.name, type='success');
-    document.getElementById("user").innerText = user_data.name+", $"+user_data.balance;
-
-    console.log(user_data);
-    
+    login(current_login)
 }
 
+async function login(login_key) {
+    let snapshot = await fetchLatestData();
+    if (!snapshot) {
+        inputFeedback("An issue has occured out of your control");
+        return;
+    }
+    let user_data = snapshot[login_key];
+    if (!user_data) {
+        inputFeedback("User does not exist");
+        return;
+    }
+
+    localStorage.setItem("current_login", login_key);
+    document.getElementById("user").innerText = user_data.name+", $"+user_data.balance;
+    inputFeedback("Welcome "+user_data.name, input="login", type="success");
+
+    console.log(user_data);
+}
+
+
 async function updateHighScores() {
-    let snapshot = await getLatestData();
+    let snapshot = await fetchLatestData();
 
     let highs = document.getElementById("highscores").querySelectorAll('p');
     let highArray = []
@@ -44,16 +49,24 @@ async function updateHighScores() {
 }
 
 async function upMoney() {
-    let snapshot = await getLatestData();
+    let snapshot = await fetchLatestData();
+    let current_login = getCurrentLogin();
     let user_data = snapshot[current_login];
     await updateUserData(current_login, 'balance', user_data.balance+1);
     updateHighScores();
 }
 
+async function attemptAutoLogin() {
+    let current_login = getCurrentLogin();
+    if (current_login) {
+        login(current_login);
+    }
+}
 
 
 window.login = login; // Export login() globally
 
 window.onload = () => {
     updateHighScores();
+    attemptAutoLogin();
 }

@@ -10,7 +10,7 @@
  * Fetches the latest user data from database server
  * @returns All user data in JSON format
  */
-async function getLatestData() {
+async function fetchLatestData() {
 
     let data = await fetch('https://stantoncomet.gleeze.com:5000/odds_user_data')
         .then(response => response.json())
@@ -42,13 +42,29 @@ async function updateUserData(login_key, resource, value) {
     return success;
 }
 
+function getCurrentLogin() {
+    return localStorage.getItem("current_login");
+}
+
+/**
+ * 
+ * @param {String} login_key 
+ * @param {number} amount Use negative value to decrease
+ */
+async function incimentBalance(login_key, amount) {
+    let snapshot = await fetchLatestData();
+    let user_data = snapshot[login_key];
+    updateUserData(login_key, "balance", user_data.balance+amount);
+}
+
 /**
  * Blinks a feedback message under the login field
  * @param {String} message 
+ * @param {String | "login"} input
  * @param {"error" | "success"} type 
  */
-function loginFeedback(message, type="error") {
-    let feedback = document.getElementById('login-feedback');
+function inputFeedback(message, input="login", type="error") {
+    let feedback = document.getElementById(`${input}-feedback`);
     feedback.innerText = message;
 
     // black magic that makes the animation restart when function is ran multiple times

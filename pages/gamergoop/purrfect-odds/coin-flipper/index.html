@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purrect Odds! - CF</title>
+    <script src="../common.js"></script>
+    <script src="./cf.js" ></script>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="./cf.css">
+</head>
+<body>
+    <div id="toolbar">
+        <a href="../"><img src="../../../../favicon.png" width="50px"></a>
+    </div>
+    <div id="coin">
+        <img src="./coins.png" width="500px">
+        <h1 id="fstatus">Flip me!</h1>
+    </div>
+    <div>
+        <input id="betting-amount" placeholder="Amount">
+        <select id="selection">
+            <option value="1">Heads</option>
+            <option value="0">Tails</option>
+        </select>
+        <button onclick="flip()">Flip</button>
+    </div>
+    <div>
+        <p id="flip-feedback">something has gone wrong -.-</p>
+    </div>
+    <footer>
+        <p>Something wrong? Contact our head of PR, Billy Jones: <a href="mailto:williamwjones61@gmail.com">williamwjones61@gmail.com</a></p>
+    </footer>
+</body>
+
+</html>

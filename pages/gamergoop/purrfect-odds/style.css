@@ -1,10 +1,13 @@
+
+
 * {
     font-family: 'Courier New', Courier, monospace;
     /* cursor: url('../tetris/assets/favicon.png'), default; */
+    --bgc: rgb(20,20,25);
 }
 
 body {
-    background-color: rgb(20,20,25);
+    background-color: var(--bgc);
     color: aliceblue;
     display: flex;
     flex-flow: column;
@@ -13,7 +16,7 @@ body {
 }
 
 footer {
-    border-top: 1px solid rgb(63, 63, 63) ;
+    border-top: 1px solid rgb(63, 63, 63);
     font-size: xx-small;
 }
 
@@ -28,9 +31,26 @@ footer {
     background-color: blueviolet;
     padding: 3px;
 }
-#highscores {
+#highscores p {
     text-align: left;
 }
+
+#news {
+    color:chartreuse;
+    background-color: rgba(143, 43, 7, 1);
+    padding: 10px;
+    margin: 30px;
+    border-radius: 30px;
+    border-style: dashed;
+}
+#news img {
+    padding: 5px;
+    /* background-color:aquamarine;*/
+    border-radius: 5px;
+    box-shadow: 7px 7px rgba(0,0,0,0.5);
+
+}
+
 
 
 @keyframes flash-error {
