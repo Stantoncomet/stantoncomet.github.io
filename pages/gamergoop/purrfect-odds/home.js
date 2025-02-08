@@ -13,7 +13,7 @@ async function processLogin() {
 }
 
 async function login(login_key) {
-    let snapshot = await getLatestData();
+    let snapshot = await fetchLatestData();
     if (!snapshot) {
         inputFeedback("An issue has occured out of your control");
         return;
@@ -33,7 +33,7 @@ async function login(login_key) {
 
 
 async function updateHighScores() {
-    let snapshot = await getLatestData();
+    let snapshot = await fetchLatestData();
 
     let highs = document.getElementById("highscores").querySelectorAll('p');
     let highArray = []
@@ -49,14 +49,15 @@ async function updateHighScores() {
 }
 
 async function upMoney() {
-    let snapshot = await getLatestData();
+    let snapshot = await fetchLatestData();
+    let current_login = getCurrentLogin();
     let user_data = snapshot[current_login];
     await updateUserData(current_login, 'balance', user_data.balance+1);
     updateHighScores();
 }
 
 async function attemptAutoLogin() {
-    let current_login = localStorage.getItem("current_login");
+    let current_login = getCurrentLogin();
     if (current_login) {
         login(current_login);
     }

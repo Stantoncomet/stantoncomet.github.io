@@ -1,7 +1,7 @@
 
 
 async function flip() {
-    let current_login = localStorage.getItem('current_login');
+    let current_login = getCurrentLogin();
     if (!current_login) {
         inputFeedback("You must be logged in to gamble!", input="flip");
         return;
@@ -17,7 +17,7 @@ async function flip() {
         inputFeedback("Bets can only be integer numbers!", input="flip");
         return;
     }
-    let snapshot = await getLatestData();
+    let snapshot = await fetchLatestData();
     let current_balance = snapshot[current_login].balance;
     if (current_balance < Math.abs(bet.value)) {
         inputFeedback("You don't have that kind of money :<", input="flip");

@@ -19,7 +19,7 @@ async function register() {
         return;
     }
     
-    let snapshot = await getLatestData();
+    let snapshot = await fetchLatestData();
     if (snapshot[login_key]) {
         loginFeedback(randItem(wild_goose_chase));
         return;
