@@ -31,11 +31,15 @@ async function updateHighScores() {
     let snapshot = await getLatestData();
 
     let highs = document.getElementById("highscores").querySelectorAll('p');
-
+    let highArray = []
     highs.forEach((h, i) => {
         let user = snapshot[Object.keys(snapshot)[i]]
         if (user == undefined) return;
-        h.innerText = user.name+" ----> $"+user.balance;
+        highArray.push([user.name, user.balance])
+    })
+    highArray.sort((a, b) => b[1] - a[1]);
+    highs.forEach((h, i) => {
+        h.innerText = highArray[i][0]+" ----> $"+highArray[i][1];
     })
 }
 
