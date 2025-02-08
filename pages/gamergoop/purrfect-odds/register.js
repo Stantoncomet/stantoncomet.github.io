@@ -28,7 +28,7 @@ async function register() {
     await updateUserData(login_key, 'name', name);
     await updateUserData(login_key, 'balance', 1000);
 
-    loginFeedback("Thanks, "+name+". Rerouting to home...", type='success');
+    inputFeedback("Thanks, "+name+". Rerouting to home...", type='success');
 
     setTimeout(document.location.href = "./index.html", 2000);
 }

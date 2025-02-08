@@ -28,7 +28,7 @@ footer {
     background-color: blueviolet;
     padding: 3px;
 }
-#highscores {
+#highscores p {
     text-align: left;
 }
 
