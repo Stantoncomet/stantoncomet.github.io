@@ -14,13 +14,13 @@ async function flip() {
         return;
     }
     if (isNaN(bet.value) || (bet.value*10)%10 != 0) {
-        inputFeedback("Bets can only be integer numbers!", input="flip");
+        inputFeedback("You can only bet in whole numbers!", input="flip");
         return;
     }
     let snapshot = await fetchLatestData();
     let current_balance = snapshot[current_login].balance;
     if (current_balance < Math.abs(bet.value)) {
-        inputFeedback("You don't have that kind of money :<", input="flip");
+        inputFeedback("You can't affort to flip!", input="flip");
         return;
     }
 

@@ -25,7 +25,7 @@ async function login(login_key) {
     }
 
     localStorage.setItem("current_login", login_key);
-    document.getElementById("user").innerText = user_data.name+", $"+user_data.balance;
+    document.getElementById("user").innerText = user_data.name+", Ⓟ"+user_data.balance;
     inputFeedback("Welcome "+user_data.name, input="login", type="success");
 
     console.log(user_data);
@@ -44,7 +44,7 @@ async function updateHighScores() {
     })
     highArray.sort((a, b) => b[1] - a[1]);
     highs.forEach((h, i) => {
-        h.innerText = highArray[i][0]+" ----> $"+highArray[i][1];
+        h.innerText = highArray[i][0]+" --- Ⓟ"+highArray[i][1];
     })
 }
 

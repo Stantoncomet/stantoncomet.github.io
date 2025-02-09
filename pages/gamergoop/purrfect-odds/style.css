@@ -36,12 +36,12 @@ footer {
 }
 
 #news {
-    color:chartreuse;
-    background-color: rgba(143, 43, 7, 1);
-    padding: 10px;
+    color:rgb(255, 174, 0);
+    background-color: #8A2BE2;
+    padding: 20px;
     margin: 30px;
-    border-radius: 30px;
-    border-style: dashed;
+    border-radius: 10px;
+    border-style:ridge;
 }
 #news img {
     padding: 5px;
