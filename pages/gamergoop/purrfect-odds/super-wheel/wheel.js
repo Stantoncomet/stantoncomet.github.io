@@ -9,7 +9,7 @@ async function spin() {
     let snapshot = await fetchLatestData();
     let current_balance = snapshot[current_login].balance;
     if (current_balance < Math.abs(100)) {
-        inputFeedback("You can't affort to spin!", input="flip");
+        inputFeedback("You can't afford to spin!", input="flip");
         return;
     }
 
