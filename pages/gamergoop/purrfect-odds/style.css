@@ -31,37 +31,59 @@ footer {
     padding: 0 5px;
 }
 
-#user {
+.user-flex {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 32px;
     background-color: blueviolet;
+    align-items: center;
+    justify-content: space-between;
     padding: 3px;
 }
+
+#user {
+    background-color: blueviolet;
+}
 #highscores p {
-    text-align: left;
+    text-align:left;
+}
+
+.blog-feed {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content:center;
 }
 
 #news-post {
     color:rgb(255, 174, 0);
     background-color: #8A2BE2;
+    width: 30%;
     padding: 20px;
     margin: 30px;
     border-radius: 10px;
     border-style:ridge;
+    align-content: center;
 }
-#game-post img {
+#news-post img {
     padding: 5px;
     border-radius: 5px;
     border-style: solid;
     box-shadow: 7px 7px rgba(0,0,0,0.5);
+    width: 15%;
 
 }
 
 #news-game {
     color:rgb(0, 255, 13);
     background-color: #21a33d;
+    width: 30%;
     padding: 20px;
     margin: 30px;
     border-radius: 10px;
     border-style:ridge;
+    align-content: center;
 }
 #news-game img {
     padding: 5px;
@@ -69,6 +91,7 @@ footer {
     border-radius: 5px;
     border-style: solid;
     box-shadow: 7px 7px rgba(0,0,0,0.5);
+    width: 15%;
 
 }
 
