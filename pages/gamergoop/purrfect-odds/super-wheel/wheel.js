@@ -1,4 +1,13 @@
-
+let snd_success = new Audio("success.wav");
+snd_success.volume = 0.2;
+let snd_fail = new Audio("fail.mp3");
+snd_fail.volume = 0.2;
+let snd_jackpot = new Audio("jackpot.mp3");
+snd_jackpot.volume = 0.5;
+let snd_superfail = new Audio("superfail.mp3");
+snd_superfail.volume = 0.3;
+let snd_spin = new Audio("spinning.mp3");
+snd_spin.volume = 0.5;
 
 async function spin() {
     let current_login = getCurrentLogin();
@@ -15,7 +24,9 @@ async function spin() {
 
     let status = document.getElementById('fstatus');
     status.innerText = "Spinning...";
-    incrementBalance(current_login, Number(-100))
+    incimentBalance(current_login, Number(-200))
+    snd_spin.load()
+    snd_spin.play()
 
     setTimeout(spinEnd, 1000);
     
@@ -80,5 +91,5 @@ async function spin() {
                 inputFeedback(`Something went wrong...`, input="flip", type="error");
                 incimentBalance(current_login, Number(100));
         }
-}
+    }
 }
