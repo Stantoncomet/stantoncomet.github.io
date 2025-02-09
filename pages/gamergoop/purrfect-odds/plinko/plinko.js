@@ -1,10 +1,10 @@
 
     const space = 50
     function pegGen(n) {
-        for (let a = 1; a <= n; a++) {
+        for (let a = 2; a <= n; a++) {
             let amt = a + 2
             for (let b = 0; b < amt; b++) {
-                let peg = Bodies.circle(render.canvas.width / 2 - space - (space / 2 * (a - 1)) + space * b , render.canvas.height / 2 - (Math.sqrt(3) * space / 4) * n + (Math.sqrt(3) * space / 2) * a, 6, { isStatic: true });
+                let peg = Bodies.circle(render.canvas.width / 2 - space - (space / 2 * (a - 1)) + space * b , render.canvas.height / 2.2 - (Math.sqrt(3) * space / 4) * n + (Math.sqrt(3) * space / 2) * a, 6, { isStatic: true });
                 Composite.add(engine.world, [peg])
             }   
         }
@@ -31,7 +31,7 @@
     // create two boxes and a ground
     var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
 
-    pegGen(10)
+    pegGen(12)
 
     // add all of the bodies to the world
     Composite.add(engine.world, [ground]);
@@ -47,6 +47,6 @@
 
 
 function spawn() {
-    let ball = Bodies.circle(render.canvas.width/2, -100, 10);
+    let ball = Bodies.circle(render.canvas.width/ (Math.random() * (2.4 - 1.6) + 1.6), -100, 10, { restitution: 0.4 });
     Composite.add(engine.world, [ball]);
 }
