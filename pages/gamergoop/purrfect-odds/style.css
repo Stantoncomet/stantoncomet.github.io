@@ -20,6 +20,10 @@ footer {
     font-size: xx-small;
 }
 
+#separator {
+    border-top: 1px solid rgb(63, 63, 63);
+}
+
 .link {
     text-decoration: none;
     border: purple solid 2px;
@@ -35,7 +39,7 @@ footer {
     text-align: left;
 }
 
-#news {
+#news-post {
     color:rgb(255, 174, 0);
     background-color: #8A2BE2;
     padding: 20px;
@@ -43,10 +47,27 @@ footer {
     border-radius: 10px;
     border-style:ridge;
 }
-#news img {
+#game-post img {
     padding: 5px;
-    /* background-color:aquamarine;*/
     border-radius: 5px;
+    border-style: solid;
+    box-shadow: 7px 7px rgba(0,0,0,0.5);
+
+}
+
+#news-game {
+    color:rgb(0, 255, 13);
+    background-color: #21a33d;
+    padding: 20px;
+    margin: 30px;
+    border-radius: 10px;
+    border-style:ridge;
+}
+#news-game img {
+    padding: 5px;
+    border-color: #1a8130;
+    border-radius: 5px;
+    border-style: solid;
     box-shadow: 7px 7px rgba(0,0,0,0.5);
 
 }

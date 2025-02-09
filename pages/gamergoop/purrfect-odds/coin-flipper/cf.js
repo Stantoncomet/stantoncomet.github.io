@@ -20,7 +20,7 @@ async function flip() {
     let snapshot = await fetchLatestData();
     let current_balance = snapshot[current_login].balance;
     if (current_balance < Math.abs(bet.value)) {
-        inputFeedback("You can't affort to flip!", input="flip");
+        inputFeedback("You can't afford this much!", input="flip");
         return;
     }
 
@@ -44,9 +44,6 @@ async function flip() {
             inputFeedback(`You lose $${bet.value}...`, input="flip", type="error");
             incimentBalance(current_login, -Number(bet.value));
         }
-
-        let snapshot = await fetchLatestData();
-        status.innerText = snapshot[current_login].balance
     }
 }
 
