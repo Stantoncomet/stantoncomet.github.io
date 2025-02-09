@@ -14,3 +14,8 @@
     /* animation-name: flash; */
     animation-duration: 4s;
 }
+
+#renderer {
+    width: 70%;
+    height: 70%;
+}
