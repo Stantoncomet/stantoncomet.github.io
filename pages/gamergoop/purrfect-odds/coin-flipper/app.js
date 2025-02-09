@@ -39,14 +39,14 @@ async function flip() {
     
         if (result == selection.value) {
             inputFeedback(`You win $${bet.value}!`, input="flip", type="success");
-            incrementBalance(current_login, Number(bet.value));
+            await incrementBalance(current_login, Number(bet.value));
         } else {
             inputFeedback(`You lose $${bet.value}...`, input="flip", type="error");
-            incrementBalance(current_login, -Number(bet.value));
+            await incrementBalance(current_login, -Number(bet.value));
         }
 
         let snapshot = await fetchLatestData();
-        status.innerText = snapshot[current_login].balance
+        let user_bal = document.getElementById('user');
+        user_bal.innerText = "Ⓟ"+snapshot[current_login].balance;
     }
 }
-
