@@ -24,19 +24,19 @@ async function spin() {
         status.innerText = "Spun!";
     
         if (result == 0) {
-            inputFeedback(`You win! (+Ⓟ25)`, input="flip", type="success");
+            inputFeedback(`You win! (+Ⓟ50)`, input="flip", type="success");
             incimentBalance(current_login, Number(25));
     }
         if (result == 1) {
-            inputFeedback(`You win! (+Ⓟ25)`, input="flip", type="success");
+            inputFeedback(`You win! (+Ⓟ50)`, input="flip", type="success");
             incimentBalance(current_login, Number(25));
     }
         if (result == 2) {
-            inputFeedback(`You win! (+Ⓟ50)`, input="flip", type="success");
+            inputFeedback(`You win! (+Ⓟ100)`, input="flip", type="success");
             incimentBalance(current_login, Number(50));
     }
         if (result == 3) {
-            inputFeedback(`You win! (+Ⓟ50)`, input="flip", type="success");
+            inputFeedback(`You win! (+Ⓟ100)`, input="flip", type="success");
             incimentBalance(current_login, Number(50));
     }
         if (result == 4) {
@@ -48,11 +48,11 @@ async function spin() {
             incimentBalance(current_login, Number(200));
     }
         if (result == 6) {
-            inputFeedback(`You win! (+Ⓟ200)`, input="flip", type="success");
+            inputFeedback(`You win! (+Ⓟ300)`, input="flip", type="success");
             incimentBalance(current_login, Number(200));
     }
         if (result == 7) {
-            inputFeedback(`You win! (+Ⓟ200)`, input="flip", type="success");
+            inputFeedback(`You win! (+Ⓟ300)`, input="flip", type="success");
             incimentBalance(current_login, Number(200));
     }
         if (result == 8) {
@@ -68,7 +68,7 @@ async function spin() {
             incimentBalance(current_login, Number(-50));
     }
         if (result == 11) {
-            inputFeedback(`You lose! (-Ⓟ150)`, input="flip", type="error");
+            inputFeedback(`You lose! (-Ⓟ-100)`, input="flip", type="error");
             incimentBalance(current_login, Number(-150));
     }
         if (result == 12) {
@@ -76,23 +76,23 @@ async function spin() {
             incimentBalance(current_login, Number(-150));
     }
         if (result == 13) {
-            inputFeedback(`You lose! (-Ⓟ200)`, input="flip", type="error");
+            inputFeedback(`You lose! (-Ⓟ250)`, input="flip", type="error");
             incimentBalance(current_login, Number(-200));
     }
         if (result == 14) {
-            inputFeedback(`You lose! (-Ⓟ200)`, input="flip", type="error");
+            inputFeedback(`You lose! (-Ⓟ300)`, input="flip", type="error");
             incimentBalance(current_login, Number(-200));
     }
         if (result == 15) {
-            inputFeedback(`You lose! (-Ⓟ200)`, input="flip", type="error");
+            inputFeedback(`You lose! (-Ⓟ350)`, input="flip", type="error");
             incimentBalance(current_login, Number(-200));
     }
         if (result == 16) {
-            inputFeedback(`You lose! (-Ⓟ300)`, input="flip", type="error");
+            inputFeedback(`You lose! (-Ⓟ400)`, input="flip", type="error");
             incimentBalance(current_login, Number(-300));
     }
         if (result == 17) {
-            inputFeedback(`You lose! (-Ⓟ400)`, input="flip", type="error");
+            inputFeedback(`You lose! (-Ⓟ450)`, input="flip", type="error");
             incimentBalance(current_login, Number(-400));
     }
         if (result == 18) {
