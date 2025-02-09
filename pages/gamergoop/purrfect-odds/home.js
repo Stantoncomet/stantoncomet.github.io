@@ -59,9 +59,10 @@ async function upMoneyRandom() {
     let snapshot = await fetchLatestData();
     let current_login = getCurrentLogin();
     let user_data = snapshot[current_login];
-    await updateUserData(current_login, 'balance', user_data.balance+(Math.floor(Math.random() * (20 - -10 + 1)) + -10));
+    await updateUserData(current_login, 'balance', user_data.balance+(Math.floor(Math.random() * (30 - -10 + 1)) + -10));
     updateHighScores();
 }
+
 
 async function attemptAutoLogin() {
     let current_login = getCurrentLogin();
