@@ -8,14 +8,14 @@ async function spin() {
     }
     let snapshot = await fetchLatestData();
     let current_balance = snapshot[current_login].balance;
-    if (current_balance < Math.abs(100)) {
+    if (current_balance < Math.abs(200)) {
         inputFeedback("You can't affort to spin!", input="flip");
         return;
     }
 
     let status = document.getElementById('fstatus');
     status.innerText = "Spinning...";
-    incimentBalance(current_login, Number(-100))
+    incimentBalance(current_login, Number(-200))
 
     setTimeout(spinEnd, 1000);
     
@@ -60,7 +60,7 @@ async function spin() {
             incimentBalance(current_login, Number(500));
     }
         if (result == 9) {
-            inputFeedback(`You win! (+Ⓟ1000)`, input="flip", type="success");
+            inputFeedback(`JACKPOT! (+Ⓟ1000)`, input="flip", type="success");
             incimentBalance(current_login, Number(1000));
     }
         if (result == 10) {
@@ -100,8 +100,8 @@ async function spin() {
             incimentBalance(current_login, Number(-500));
     }
         if (result == 19) {
-            inputFeedback(`Devastating loss! (Balance halved!)`, input="flip", type="success");
-            incimentBalance(current_login, Number(current_balance/2));
+            inputFeedback(`Devastating loss! (Balance halved!)`, input="flip", type="error");
+            incimentBalance(current_login, Number(Math.round(current_balance/2)));
     }
 }
 }
