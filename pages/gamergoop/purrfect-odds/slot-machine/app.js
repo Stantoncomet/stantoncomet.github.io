@@ -2,7 +2,7 @@ let symbols = [
     "purrfect",
     "eye",
     "toilet",
-    "mc_block",
+    "minecraft",
     "threetwos",
     "apple"
 ]
@@ -13,7 +13,7 @@ let slot_worth = {
     "purrfect": [ 200, 400, 1_000, 3_000, 10_000, 69_420],
     "eye": [ 150, 300, 800, 10_000, 9, 700_000],
     "toilet": smalls,
-    "mc_block": smalls,
+    "minecraft": smalls,
     "threetwos": smalls,
     "apple": smalls
 }
@@ -23,7 +23,13 @@ let slots = [ "what", "what", "what", "what", "what", "what" ];
 async function spin() {
     let current_login = getCurrentLogin();
     if (!current_login) {
-        inputFeedback("You must be logged in to gamble!", input="flip");
+        inputFeedback("You must be logged in to gamble!", input="spin");
+        return;
+    }
+    let snapshot = await fetchLatestData();
+    let current_balance = snapshot[current_login].balance;
+    if (current_balance < 300) {
+        inputFeedback("You can't affort to play this one!", input="spin");
         return;
     }
 
@@ -46,7 +52,15 @@ async function spin() {
         }
     })
 
-    slots = [ "eye", "eye", "eye", "eye", "eye", "apple" ];
+    // After spin, load textures
+    slots.forEach((e, i) => {
+        let slot_ele = document.getElementById(`slot-${i}`);
+        slot_ele.src = `assets/${e}.png`
+    })
+
+
+
+    //slots = [ "eye", "eye", "eye", "eye", "eye", "apple" ];
 
     let last_e = "what";
     let row_count = 0;
@@ -79,4 +93,16 @@ async function spin() {
     console.log("Total win: "+total_win);
     console.log("Slots: "+slots);
 
+    let reward = document.getElementById('sstatus');
+    reward.innerText = `+Ⓟ${total_win}`
+
+    await incrementBalance(current_login, total_win-300); //-300 for the cost
+
 }
+
+// window.onload = () => {
+//     let slot_eles = document.querySelectorAll('.slot');
+//     slot_eles.forEach(e => {
+//         e.src = './assets/minecraft.png';
+//     })
+// }

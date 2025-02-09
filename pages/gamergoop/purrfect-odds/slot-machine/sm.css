@@ -1,3 +1,13 @@
+#slots {
+    border: 2px white solid;
+    padding: 10px;
+}
+
+.slot {
+    width: 100px;
+    height: 100px;
+}
+
 
 #spin-feedback {
     color: lightgreen;
