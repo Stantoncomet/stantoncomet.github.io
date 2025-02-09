@@ -39,10 +39,10 @@ async function flip() {
     
         if (result == selection.value) {
             inputFeedback(`You win $${bet.value}!`, input="flip", type="success");
-            incimentBalance(current_login, Number(bet.value));
+            incrementBalance(current_login, Number(bet.value));
         } else {
             inputFeedback(`You lose $${bet.value}...`, input="flip", type="error");
-            incimentBalance(current_login, -Number(bet.value));
+            incrementBalance(current_login, -Number(bet.value));
         }
 
         let snapshot = await fetchLatestData();
