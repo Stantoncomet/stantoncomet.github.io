@@ -31,7 +31,6 @@ async function login(login_key) {
     console.log(user_data);
 }
 
-
 async function updateHighScores() {
     let snapshot = await fetchLatestData();
 
@@ -53,6 +52,14 @@ async function upMoney() {
     let current_login = getCurrentLogin();
     let user_data = snapshot[current_login];
     await updateUserData(current_login, 'balance', user_data.balance+1);
+    updateHighScores();
+}
+
+async function upMoneyRandom() {
+    let snapshot = await fetchLatestData();
+    let current_login = getCurrentLogin();
+    let user_data = snapshot[current_login];
+    await updateUserData(current_login, 'balance', user_data.balance+(Math.floor(Math.random() * (20 - 10 + 1)) + -10));
     updateHighScores();
 }
 

@@ -25,11 +25,11 @@ async function flip() {
     }
 
     let status = document.getElementById('fstatus');
-    status.innerText = ".o.";
+    status.innerText = "Flipping...";
 
     setTimeout(flipEnd, 500);
     
-    function flipEnd() {
+    async function flipEnd() {
         let result = Math.floor(Math.random()*2);
         if (result) {
             status.innerText = "Heads";
@@ -44,6 +44,9 @@ async function flip() {
             inputFeedback(`You lose $${bet.value}...`, input="flip", type="error");
             incimentBalance(current_login, -Number(bet.value));
         }
+
+        let snapshot = await fetchLatestData();
+        status.innerText = snapshot[current_login].balance
     }
 }
 
