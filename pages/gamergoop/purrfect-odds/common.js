@@ -38,7 +38,7 @@ async function updateUserData(login_key, resource, value) {
         })
     })
         .then(response => response.json())
-        .catch(err => {console.log(err); return 0})
+        .catch(err => console.log(err))
     return success;
 }
 
@@ -57,10 +57,8 @@ async function incrementBalance(login_key, amount) {
     await updateUserData(login_key, "balance", user_data.balance+amount);
 }
 
-async function setBalance(login_key, amount) {
-    let snapshot = await fetchLatestData();
-    let user_data = snapshot[login_key];
-    updateUserData(login_key, "balance", user_data.balance=amount);
+async function updateBalance(login_key, amount) {
+    await updateUserData(login_key, "balance", amount);
 }
 
 /**
