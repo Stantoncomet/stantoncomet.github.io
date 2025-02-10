@@ -1,6 +1,16 @@
-#slots {
+#machine {
     border: 2px white solid;
-    padding: 10px;
+}
+
+#case {
+    width: 800px;
+    image-rendering: pixelated;
+    
+}
+
+#slots {
+    /* position: absolute; */
+    /* padding: 10px; */
 }
 
 .slot {

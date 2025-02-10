@@ -105,13 +105,13 @@ async function spin() {
             // Strange Outcomes
             case result >= 20 && result <= 21:
                 inputFeedback(`Strange outcome! (Balance halved!)`, input="flip", type="error");
-                setBalance(current_login, Number(Math.floor(current_balance/2)));
+                updateBalance(current_login, Number(Math.floor(current_balance/2)));
                 snd_strange.load()
                 snd_strange.play()
                 break;
             case result == 22:
                 inputFeedback(`Strange outcome! (Balance square-rooted!)`, input="flip", type="error");
-                setBalance(current_login, Number(Math.floor(Math.sqrt(current_balance))));
+                updateBalance(current_login, Number(Math.floor(Math.sqrt(current_balance))));
                 snd_strange.load()
                 snd_strange.play()
                 break;
@@ -123,7 +123,7 @@ async function spin() {
                 break;
             case result == 24:
                 inputFeedback(`Strange outcome! (Balance randomized!?)`, input="flip", type="success");
-                setBalance(current_login, Number((Math.floor(Math.random() * ((current_balance*1.5) - 0 + 1)) + 0)));
+                updateBalance(current_login, Number((Math.floor(Math.random() * ((current_balance*1.5) - 0 + 1)) + 0)));
                 snd_strange.load()
                 snd_strange.play()
                 break;
