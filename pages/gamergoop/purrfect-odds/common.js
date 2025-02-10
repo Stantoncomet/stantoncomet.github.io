@@ -51,10 +51,10 @@ function getCurrentLogin() {
  * @param {String} login_key 
  * @param {number} amount Use negative value to decrease
  */
-async function incimentBalance(login_key, amount) {
+async function incrementBalance(login_key, amount) {
     let snapshot = await fetchLatestData();
     let user_data = snapshot[login_key];
-    updateUserData(login_key, "balance", user_data.balance+amount);
+    await updateUserData(login_key, "balance", user_data.balance+amount);
 }
 
 async function setBalance(login_key, amount) {

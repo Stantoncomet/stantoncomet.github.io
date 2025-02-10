@@ -1,0 +1,19 @@
+#slots {
+    border: 2px white solid;
+    padding: 10px;
+}
+
+.slot {
+    width: 100px;
+    height: 100px;
+}
+
+
+#spin-feedback {
+    color: lightgreen;
+    font-size: small;
+    opacity: 0.0;
+
+    /* animation-name: flash; */
+    animation-duration: 4s;
+}
