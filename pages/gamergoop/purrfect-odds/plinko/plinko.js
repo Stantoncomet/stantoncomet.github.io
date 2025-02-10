@@ -31,7 +31,7 @@
     // create two boxes and a ground
     var ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
 
-    pegGen(4)
+    pegGen(11)
 
     // add all of the bodies to the world
     Composite.add(engine.world, [ground]);
@@ -47,6 +47,6 @@
 
 
 function spawn() {
-    let ball = Bodies.circle(render.canvas.width / 2 - 20 + Math.random() * 40, -100, 10, { restitution: 0.4 });
+    let ball = Bodies.circle(render.canvas.width / 2 - 19 + Math.random() * 38, -100, 10, { restitution: 0.4 });
     Composite.add(engine.world, [ball]);
 }
