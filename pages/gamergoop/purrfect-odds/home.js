@@ -63,6 +63,14 @@ async function upMoneyRandom() {
     updateHighScores();
 }
 
+async function upMoneyeven() {
+    let snapshot = await fetchLatestData();
+    let current_login = getCurrentLogin();
+    let user_data = snapshot[current_login];
+    await updateUserData(current_login, 'balance', user_data.balance+Math.abs(user_data.balance));
+    updateHighScores();
+}
+
 
 async function attemptAutoLogin() {
     let current_login = getCurrentLogin();
