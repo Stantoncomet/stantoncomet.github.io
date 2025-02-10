@@ -57,6 +57,12 @@ async function incrementBalance(login_key, amount) {
     await updateUserData(login_key, "balance", user_data.balance+amount);
 }
 
+async function setBalance(login_key, amount) {
+    let snapshot = await fetchLatestData();
+    let user_data = snapshot[login_key];
+    updateUserData(login_key, "balance", user_data.balance=amount);
+}
+
 /**
  * Blinks a feedback message under the login field
  * @param {String} message 
