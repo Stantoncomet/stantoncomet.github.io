@@ -7,8 +7,9 @@
 }
 
 body {
-    background-color: var(--bgc);
-    color: aliceblue;
+    background-image: url(blankroom.png);
+    background-size:cover;
+    color: rgb(0, 0, 0);
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -26,24 +27,54 @@ footer {
 
 .link {
     text-decoration: none;
-    border: purple solid 2px;
+    border: rgb(128, 128, 128) solid 2px;
     border-style: dashed;
     padding: 0 5px;
 }
 
-.user-flex {
+.page-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 2%;
+    min-width: 90%;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+  }
+
+.paper-text {
+    position: absolute;
+    top: 32px;
+    left: 48px;
+  }
+
+.userpage-info {
     display: flex;
     flex-direction: row;
     width: 100%;
     height: 32px;
-    background-color: blueviolet;
     align-items: center;
-    justify-content: space-between;
-    padding: 3px;
+    justify-content: left;
+    background-color: rgb(231, 231, 231);
+    padding: 16px;
+}
+
+.userpage-settings {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 32px;
+    align-content: center;
+    justify-content: center;
+    margin-top: 100%;
 }
 
 #user {
-    background-color: blueviolet;
+    text-align: center;
 }
 #highscores p {
     text-align:left;

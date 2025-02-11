@@ -11,39 +11,55 @@
 </head>
 <body>
 
-    <div id="toolbar" class="user-flex">
-        <p id="user">Not logged in!</p>
-        <div>
-        <input id="login-key" placeholder="Login Key">
-        <button class="button" onclick="processLogin()">Login</button>
-        <button class="button" onclick="upMoney()">+Ⓟ</button>
-        <button class="button" onclick="upMoneyRandom()">?Ⓟ</button>
-        <button class="button" onclick="upMoney100()">+Ⓟ100</button>
-        </div>
-        <p>New? Register <a href="./register.html" class="link">here</a></p>
-    </div>
-
-    <div id="highscores">
-        <h1>High Scores</h1>
-        <h6><span><button onclick="updateHighScores()">refresh</button></span></h6>
-        <p>--- </p>
-        <p>--- </p>
-        <p>--- </p>
-        <p>--- </p>
-        <p>--- </p>
-        <p>--- </p>
-        <p>--- </p>
-        <p>--- </p>
-        <p>--- </p>
-        <p>--- </p>
-    </div>
 
     <div>
         <p id="login-feedback">something has gone wrong -.-</p>
     </div>
-    <div id="separator" style="width: 100%;"></div>
-    <h1>News & Games</h1>
-<div class="blog-feed">
+<div class="page-content">
+    <div class="container">
+    <img src="paper1.png">
+    <div class="paper-text">
+        <div id="toolbar" >
+            <h1>Your Page</h1>
+            <div class="userpage-info">
+            <img src="defaulticon.png">
+            <p id="user">Guest</p>
+            </div>
+            <div class="userpage-settings">
+            <input id="login-key" placeholder="Login Key">
+            <button class="button" onclick="processLogin()">Login</button>
+            <button class="button" onclick="upMoney()">+Ⓟ</button>
+            <button class="button" onclick="upMoneyRandom()">?Ⓟ</button>
+            <button class="button" onclick="upMoney100()">+Ⓟ100</button>
+            </div>
+            <p>New? Register <a href="./register.html" class="link">here</a></p>
+        </div>
+    </div>
+    </div>
+
+    <div class="container">
+    <img src="paper2.png">
+    <div class="paper-text">
+        <div id="highscores">
+            <h1>High Scores</h1>
+            <h6><span><button onclick="updateHighScores()">refresh</button></span></h6>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+            <p>--- </p>
+        </div>    
+    </div>
+    </div>
+</div>
+<!-- <div class="blog-feed">
     <div id="news-game">
         <h2>Game: Coin Flip!</h1>
         <a href="./coin-flipper/"><img src="./coin-flipper/coins.png" width="50px"></a>
@@ -60,13 +76,13 @@
             <source src="mario.mp4" type="video/mp4">
         </video>
     </div>
-</div>
+</div> -->
 
 
     
-    <footer>
+    <!-- <footer>
         <p>Something wrong? Contact our head of PR, Billy Jones: <a href="mailto:williamwjones61@gmail.com">williamwjones61@gmail.com</a></p>
-    </footer>
+    </footer> -->
 </body>
 
 </html>
