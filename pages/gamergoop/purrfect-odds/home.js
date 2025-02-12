@@ -25,7 +25,7 @@ async function login(login_key) {
     }
 
     localStorage.setItem("current_login", login_key);
-    document.getElementById("user").innerText = user_data.name+", $"+user_data.balance;
+    document.getElementById("user").innerText = user_data.name+" ... $"+user_data.balance;
     inputFeedback("Welcome "+user_data.name, input="login", type="success");
 
     console.log(user_data);

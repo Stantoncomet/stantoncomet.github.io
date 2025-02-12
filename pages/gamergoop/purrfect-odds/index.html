@@ -6,6 +6,12 @@
     <title>Purrect Odds!</title>
     <script src="./common.js"></script>
     <script src="./home.js" ></script>
+    <style>
+        body {
+            background-image: url(blankroom.png);
+            background-size:cover;
+        }
+    </style>
 
     <link rel="stylesheet" href="./style.css">
 </head>
@@ -14,10 +20,10 @@
         <p id="login-feedback">something has gone wrong -.-</p>
     </div>
     <div class="page-content">
-        <div class="container">
+        <div class="container" id="left">
             <img src="paper1.png">
             <div class="paper-text">
-                <div id="toolbar" >
+                <div id="toolbar">
                     <h1>Your Page</h1>
                     <div class="userpage-info">
                         <img src="defaulticon.png">
@@ -33,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" id="right">
             <img src="paper2.png">
             <div class="paper-text">
                 <div id="highscores">

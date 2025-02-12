@@ -10,8 +10,6 @@
 }
 
 body {
-    background-image: url(blankroom.png);
-    background-size:cover;
     color: rgb(0, 0, 0);
     display: flex;
     flex-flow: column;
@@ -47,6 +45,14 @@ footer {
     padding: 2%;
     margin-top:2%;
     min-width: 90%;
+}
+
+#left {
+    rotate: 352deg;
+}
+
+#right {
+    rotate: 8deg;
 }
 
 .container {
