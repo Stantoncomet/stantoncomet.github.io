@@ -1,0 +1,129 @@
+@font-face {
+    src: url(aracne.otf);
+    font-family: "crazy";
+}
+
+body {
+    background-color: black;
+    background-image: url(adminbg.png);
+    background-size: 100%;
+    font-family:"crazy";
+}
+
+p {
+    color: white;
+    font-size: 200%;
+}
+
+h1 {
+    color: white;
+    font-size: 400%;
+}
+
+.page-content {
+    background: linear-gradient(to bottom, #74b9e7 0%, #6b91e279 100%);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    padding: 32px;
+    margin: 1%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.settings-content {
+    border: 4px solid rgb(0, 0, 0);
+    border-radius: 32px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 16px;
+    max-width: 320px;
+    margin: 1%;
+    flex-wrap: wrap;
+}
+
+button {
+    border: 4px solid rgb(0, 183, 255);
+    border-radius: 32px;
+    background-color: rgb(0, 183, 255);
+    font-size: 150%;
+    color: white;
+    justify-content: center;
+    margin-top:4%;
+}
+
+button:hover{
+    border: 4px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    font-size: 150%;
+    color: rgb(19, 188, 255);
+}
+
+input {
+    border: 0px solid rgba(85, 85, 85, 0.486);
+    border-radius: 8px;
+    background-color: rgba(85, 85, 85, 0.486);
+    font-size: 150%;
+    color: white;
+    margin-top:4%;
+}
+
+input:hover{
+    border: 0px solid rgba(255, 255, 255, 0.486);
+    background-color: rgba(255, 255, 255, 0.815);
+    font-size: 150%;
+    color: rgb(31, 31, 31);
+}
+
+#admin-delete-password {
+    padding: 0px;
+}
+
+#admin-setbalance-password {
+    padding: 0px;
+}
+
+#admin-setbalance {
+    padding: 0px;
+}
+
+#admin-password {
+    padding: 0px;
+}
+
+#login-feedback {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes flash-error {
+    0% { opacity: 1.0; color: red; }
+    10% { opacity: 1.0; color: rgb(212, 0, 0); }
+    20% { opacity: 1.0; color: red; }
+    30% { opacity: 1.0; color: rgb(212, 0, 0); }
+    40% { opacity: 1.0; color: red; }
+    50% { opacity: 1.0; color: rgb(212, 0, 0); }
+    60% { opacity: 1.0; color: red; }
+    70% { opacity: 1.0; color: rgb(212, 0, 0); }
+    80% { opacity: 1.0; color: red; }
+    90% { opacity: 0.75; color: rgb(255, 0, 0); }
+    100% { opacity: 0.0; color: red; }
+}
+
+@keyframes flash-success {
+    0% { opacity: 1.0; }
+    10% { opacity: 1.0; }
+    80% { opacity: 1.0; }
+    100% { opacity: 0.0; }
+}
+
+#login-feedback {
+    color: lightgreen;
+    font-size: small;
+    opacity: 0.0;
+
+    /* animation-name: flash; */
+    animation-duration: 2s;
+}
