@@ -1,5 +1,25 @@
 let bet = document.getElementById('betting-amount');
-    const space = 50
+let current_login = getCurrentLogin();
+const space = 50
+let snapshot, current_balance;
+let prevID
+
+
+async function loadInfo() {
+    snapshot = await fetchLatestData();
+    current_balance = snapshot[current_login].balance;
+}
+
+loadInfo()
+
+function money() {
+    current_balance = 1000
+}
+
+function what() {
+    console.log(current_balance) 
+}
+
     function pegGen(n) {
         for (let a = 1; a <= n; a++) {
             let amt = a + 2
@@ -17,20 +37,16 @@ let bet = document.getElementById('betting-amount');
     }
 
     const renderSize = .7 * window.innerWidth;
-    console.log(renderSize)
-    // module aliases
+
     var Engine = Matter.Engine,
     Render = Matter.Render,
     Runner = Matter.Runner,
     Bodies = Matter.Bodies,
     Composite = Matter.Composite,
     Events = Matter.Events;
-    
 
-    // create an engine
     var engine = Engine.create();
 
-    // create a renderer
     var render = Render.create({
         element: document.getElementById('renderer'),
         engine: engine
@@ -44,69 +60,72 @@ let bet = document.getElementById('betting-amount');
 
     pegGen(5)
 
-    // add all of the bodies to the world
     Composite.add(engine.world, [ground]);
 
-    // run the renderer
     Render.run(render);
 
-    // create runner
     var runner = Runner.create();
 
-    // run the engine
     Runner.run(runner, engine);
 
 async function spawn() {
-    let current_login = getCurrentLogin();
+    loadInfo()
     if (!current_login) {
-        inputFeedback("You must be logged in to gamble!", input="flip");
+        inputFeedback("You must be logged in to gamble!", input="bet");
         return;
     }
     if (!bet.value) {
-        inputFeedback("Please choose a betting amount!", input="flip");
+        inputFeedback("Please choose a betting amount!", input="bet");
         return;
     }
     if (isNaN(bet.value) || (bet.value*10)%10 != 0) {
-        inputFeedback("You can only bet in whole numbers!", input="flip");
+        inputFeedback("You can only bet in whole numbers!", input="bet");
         return;
     }
-    let snapshot = await fetchLatestData();
-    let current_balance = snapshot[current_login].balance;
+    
     if (current_balance < Math.abs(bet.value)) {
-        inputFeedback("You can't affort to bet!", input="flip");
+        inputFeedback("You can't afford to bet!", input="bet");
         return;
     }
-
+    console.log(`Decrementing ${0 - bet.value}`)
+    incimentBalance(current_login, Number(0 - bet.value));
     let ball = Bodies.circle(render.canvas.width / 2 - 15 + Math.random() * 30, -100, 10, { restitution: .4, label: 'ball', friction: .05 });
     Composite.add(engine.world, [ball]);
 }
 
-function mult() {
-    incimentBalance(current_login, Number(global.bet.value));
-}
-
 function bodyID(a, b) {
+    
     Composite.remove(engine.world, a);
+    if (prevID && a.id == prevID) {
+        return
+    }
+    console.log(prevID)
+    console.log(a.id)
+    prevID = a.id
     console.log(b.multiplier)
+    
+    if (!b.multiplier) {
+        return
+    }
+    console.log(`Incrementing ${Math.round(bet.value * b.multiplier)}`)
+    incimentBalance(current_login, Number(Math.round(bet.value * b.multiplier)));
+    
+    
 }
 
 Events.on(engine, 'collisionStart', event => {
     event.pairs.forEach(pair => {
         const { bodyA, bodyB } = pair;
-        console.log(pair)
         if (!((bodyA.label == 'ball' && bodyB.label == 'peg') || (bodyA.label == 'peg' && bodyB.label == 'ball'))) {
             if (bodyA.label == 'ball') {
                 bodyID(bodyA, bodyB)
             } else {
                 bodyID(bodyB, bodyA)
             }
-            
-            mult();
         }
     });
 });
 
 Events.on(MouseConstraint, "mousedown", e => {
-    console.log(engine.world)
-})
 
+})
