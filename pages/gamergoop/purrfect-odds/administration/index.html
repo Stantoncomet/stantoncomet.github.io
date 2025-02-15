@@ -15,31 +15,29 @@
     <center>
 
         <div>
-            <input id="admin-password" placeholder="Enter Admin Password"></input> 
+            <p id="modify-user"></p>
+            <input id="modify-pass" placeholder="Enter a password"></input> 
+            <input id="modify-bal" placeholder="Enter a number"></input> 
         </div>
         
 <div class="page-content">
 
-<!-- <div class="settings-content">
-    <center>
-        <p style="font-size: 200%;">Account Deletion<br>- - - - - - - - - - - -</p>
-<button onclick="deleteUserData(document.getElementById('admin-delete-password').value)"><b>Delete Account</b></button>
-<input id="admin" placeholder="Password"></input> 
-    </center>
-</div> -->
-
 <div class="settings-content">
-    <center>
-        <p style="font-size: 200%;">Account Balance<br>- - - - - - - - - - - -</p>
-<button onclick="admin_setBalance(document.getElementById('admin-setbalance-password').value, document.getElementById('admin-setbalance').value)"><b>Set Balance</b></button>
-<input id="admin-setbalance-password" placeholder="Password"></input> 
-<input id="admin-setbalance" placeholder="Set Balance"></input>
+<div>
+<p style="font-size: 200%;">Account Settings<br>- - - - - - - - - - - -</p>
+</div>
+
+<div>
+<button onclick="admin_setBalance(document.getElementById('modify-pass').value, Number(document.getElementById('modify-bal').value))"><b>Set Balance</b></button>
+<button onclick="admin_fixbalance(document.getElementById('modify-pass').value)"><b>Reset Balance</b></button>
+</div>
+</div>
+
+</div>
+
+
+
 <p id="login-feedback">something has gone wrong -.-</p>
-    </center>
-</div>
-
-
-</div>
 
 <script src="movesound.js"></script>
 
