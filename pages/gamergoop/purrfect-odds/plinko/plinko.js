@@ -87,7 +87,6 @@ async function spawn() {
         inputFeedback("You can't afford to bet!", input="bet");
         return;
     }
-    console.log(`Decrementing ${0 - bet.value}`)
     incimentBalance(current_login, Number(0 - bet.value));
     let ball = Bodies.circle(render.canvas.width / 2 - 15 + Math.random() * 30, -100, 10, { restitution: .4, label: 'ball', friction: .05 });
     Composite.add(engine.world, [ball]);
@@ -99,17 +98,14 @@ function bodyID(a, b) {
     if (prevID && a.id == prevID) {
         return
     }
-    console.log(prevID)
-    console.log(a.id)
     prevID = a.id
-    console.log(b.multiplier)
     
     if (!b.multiplier) {
         return
     }
-    console.log(`Incrementing ${Math.round(bet.value * b.multiplier)}`)
+    inputFeedback(`You win ${Math.round(bet.value * b.multiplier)}!`, input='bet', type='success')
     incimentBalance(current_login, Number(Math.round(bet.value * b.multiplier)));
-    
+    console.log(current_balance)
     
 }
 
