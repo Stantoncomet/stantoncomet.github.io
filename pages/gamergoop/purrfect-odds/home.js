@@ -1,55 +1,87 @@
-let current_login;
 
 
-async function login() {
+
+async function processLogin() {
+    let current_login;
     current_login = document.getElementById("login-key").value;
     document.getElementById("login-key").value = "";
     if (!current_login) {
-        loginFeedback("Please enter a login key");
+        inputFeedback("Please enter a login key");
         return;
     }
+    login(current_login)
+}
 
-    let snapshot = await getLatestData();
+async function login(login_key) {
+    let snapshot = await fetchLatestData();
     if (!snapshot) {
-        loginFeedback("An issue has occured out of your control");
+        inputFeedback("An issue has occured out of your control");
         return;
     }
-    let user_data = snapshot[current_login];
+    let user_data = snapshot[login_key];
     if (!user_data) {
-        loginFeedback("User does not exist");
+        inputFeedback("User does not exist");
         return;
     }
 
-    loginFeedback("Welcome "+user_data.name, type='success');
-    document.getElementById("user").innerText = user_data.name+", $"+user_data.balance;
+    localStorage.setItem("current_login", login_key);
+    document.getElementById("user").innerText = user_data.name+", Ⓟ"+user_data.balance;
+    inputFeedback("Welcome "+user_data.name, input="login", type="success");
 
     console.log(user_data);
-    
 }
 
 async function updateHighScores() {
-    let snapshot = await getLatestData();
+    let snapshot = await fetchLatestData();
 
     let highs = document.getElementById("highscores").querySelectorAll('p');
-
+    let highArray = []
     highs.forEach((h, i) => {
         let user = snapshot[Object.keys(snapshot)[i]]
         if (user == undefined) return;
-        h.innerText = user.name+" ----> $"+user.balance;
+        highArray.push([user.name, user.balance])
+    })
+    highArray.sort((a, b) => b[1] - a[1]);
+    highs.forEach((h, i) => {
+        h.innerText = highArray[i][0]+" --- Ⓟ"+highArray[i][1];
     })
 }
 
 async function upMoney() {
-    let snapshot = await getLatestData();
+    let snapshot = await fetchLatestData();
+    let current_login = getCurrentLogin();
     let user_data = snapshot[current_login];
     await updateUserData(current_login, 'balance', user_data.balance+1);
     updateHighScores();
 }
 
+async function upMoneyRandom() {
+    let snapshot = await fetchLatestData();
+    let current_login = getCurrentLogin();
+    let user_data = snapshot[current_login];
+    await updateUserData(current_login, 'balance', user_data.balance+(Math.floor(Math.random() * (20 - -10 + 1)) + -10));
+    updateHighScores();
+}
+
+async function upMoney100() {
+    let snapshot = await fetchLatestData();
+    let current_login = getCurrentLogin();
+    let user_data = snapshot[current_login];
+    await updateUserData(current_login, 'balance', user_data.balance+100);
+    updateHighScores();
+}
+
+async function attemptAutoLogin() {
+    let current_login = getCurrentLogin();
+    if (current_login) {
+        login(current_login);
+    }
+}
 
 
 window.login = login; // Export login() globally
 
 window.onload = () => {
     updateHighScores();
+    attemptAutoLogin();
 }

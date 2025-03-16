@@ -1,0 +1,16 @@
+
+
+#coin {
+    margin: 50px;
+}
+
+
+
+#flip-feedback {
+    color: lightgreen;
+    font-size: small;
+    opacity: 0.0;
+
+    /* animation-name: flash; */
+    animation-duration: 4s;
+}
