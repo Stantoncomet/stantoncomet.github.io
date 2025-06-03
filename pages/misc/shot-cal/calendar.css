@@ -1,0 +1,65 @@
+#calbar {
+    height: 2vw;
+    background-color: rgb(16, 62, 39);
+    display: flex;
+}
+
+#calbar div {
+    width: calc(100%/7);
+    color: rgb(149, 189, 29);
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    font-size: larger;
+}
+
+#calendar {
+    width: 70%;
+    background-color: aliceblue;
+
+}
+
+.week {
+    height: 7vw;
+
+    background-color: rgb(27, 109, 68);
+    /* border-bottom: black solid 2px; */
+
+    display: flex;
+}
+
+.day {
+    width: calc(100%/7);
+
+    overflow: hidden;
+
+    /* margin: 10px; */
+    border: rgb(149, 189, 29) solid .5vw;
+    /* border-right: black solid 2px; */
+}
+
+.day.noexista {
+    background-color: rgba(0,0,0,0.3);
+    border: rgb(100, 115, 20) solid .5vw;
+}
+
+.day p {
+    margin: 0;
+    color: white;
+    font-weight: 900;
+}
+
+.plan {
+    height: 25%;
+    display: flex;
+    background-color: rgb(48, 48, 250);
+    border: rgb(32, 20, 207) solid .15vw;
+
+    font-size: 1vw;
+    align-items: center;
+    
+}
+
+
+
