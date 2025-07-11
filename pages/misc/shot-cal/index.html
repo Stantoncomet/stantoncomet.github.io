@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+        <link rel="stylesheet" href="dressup.css">
+        <link rel="stylesheet" href="navbar.css">
+        <link rel="stylesheet" href="calendar.css">
+        <script src="paus_client.js" defer></script>
+        <script src="calendar_api.js" defer></script>
+        <script src="main.js" defer></script>
+
+        <title>SHOT calendar</title>
+
+    </head>
+    <body>
+        <div id="navbar">
+            <div id="info">
+                <h1>SHOT Calendar</h1>
+                <h1 id="datenow"></h1>
+            </div>
+            <div id="user">
+                <h1>Guest</h1>
+            </div>
+            <div id="access">
+                <button onclick="access()">Access</button>
+            </div>
+        </div>
+        <div id="calendar">
+            <div id="calbar">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div id="map"></div>
+        </div>
+
+        <div id="login">
+            <button id="close-login" onclick="close_login()">X</button>
+            <h1>Login</h1>
+            <h1 id="keycode">----</h1>
+            <div id="keypad">
+                <button onclick="keypad(1)">1</button>
+                <button onclick="keypad(2)">2</button>
+                <button onclick="keypad(3)">3</button>
+                <button onclick="keypad(4)">4</button>
+                <button onclick="keypad(5)">5</button>
+                <button onclick="keypad(6)">6</button>
+                <button onclick="keypad(7)">7</button>
+                <button onclick="keypad(8)">8</button>
+                <button onclick="keypad(9)">9</button>
+                <button onclick=""></button>
+                <button onclick="keypad(0)">0</button>
+                <button onclick="keypad(900)"><</button>
+            </div>
+            <button onclick="login()">Go!</button>
+        </div>
+    </body>
+</html>
