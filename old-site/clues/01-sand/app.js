@@ -46,6 +46,8 @@ function convert() {
     document.getElementById('piece').innerHTML += "<br>["+csquares.slice(80, 95)+"],";
     document.getElementById('piece').innerHTML += "<br>["+csquares.slice(96, 111)+"],";
     document.getElementById('piece').innerHTML += "<br>["+csquares.slice(112, 127)+"]";
-    document.getElementById('piece').innerHTML += "<br><a href='../../../pages/gamergoop/tetris'>Back to tetris</a>"
+    document.getElementById('piece').innerHTML += "<br><a href='../../../pages/gamergoop/tetris'>Back to tetris</a>";
+    document.getElementById('piece').innerHTML += "<br>or email piece to";
+    document.getElementById('piece').innerHTML += "<br><span style='font-size: x-small; background-color: beige;'>williamwjones61@gmail.com</span>";
     console.log(acsquares);
 }

@@ -70,6 +70,9 @@ body {
     border-style: double;
     background-color: rgb(50, 52, 71);
 }
+#score-tab #level {
+    font-size: 20px;
+}
 
 .options {
     padding-bottom: 50px;
