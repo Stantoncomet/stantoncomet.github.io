@@ -692,7 +692,9 @@ const nonos = {
 
 
 let game_status = 0;
+let total_lines_cleared = 0;
 let score = 0;
+let level = 1;
 let s_score = "00000";
 
 //make current piece
@@ -726,8 +728,9 @@ if (enable_old_school) {
 const fps = 60;
 setInterval(draw, 1000/fps);
 //do the drop thing thing
-let droprate = 2; //drops per second
+let droprate = 1; //drops per second
 let dropID;
+let soft_drop = false;
 
 
 //draw every frame
@@ -786,6 +789,7 @@ function draw() {
 
     //SCORE
     document.getElementById('score').innerText = s_score;
+    document.getElementById('level-num').innerText = level;
     if (score >= 100) document.getElementById('score').style.color = '#7ff';
     if (score >= 500) document.getElementById('score').style.color = '#ff7';
     if (score >= 1000) document.getElementById('score').style.color = '#f7f';
@@ -835,6 +839,7 @@ window.resetGame = function () {
     bh = height/u;
     clearTimeout(dropID);
     game_status = 0;
+    total_lines_cleared = 0;
     score = 0;
     s_score = "00000";
     document.getElementById('score').style.color = '#fff';
@@ -919,7 +924,8 @@ document.addEventListener('keydown', evt => {
             break;
         }
         case 'ArrowDown': {
-            if (droprate == 2)
+            soft_drop = true;
+            if (droprate == level)
                 dropNCheck()
             droprate = 30;
                 
@@ -981,7 +987,8 @@ document.addEventListener('keydown', evt => {
 document.addEventListener('keyup', evt => {
     switch (evt.key) {
         case 'ArrowDown': {
-            droprate = 2;
+            soft_drop = false;
+            droprate = level;
             break;
         }
         case ' ': {
@@ -1024,6 +1031,14 @@ function checkClear() {
 
     current_piece.pushBoard(board);
     drawFallen();
+
+    // update level
+    total_lines_cleared+=lines_cleared;
+    level = 1+Math.floor(total_lines_cleared/10);
+
+    if (!soft_drop)
+        droprate = level;
+
 }
 
 function drawFallen() {

@@ -1,312 +1,82 @@
-@font-face {
-    font-family: "StantonScript";
-    src: url("../fonts/StantonsScript-Regular.ttf") format("truetype")
+* {
+    font-family: 'Courier New', Courier, monospace;
 }
-
 
 
 body {
-    font-family: StantonScript;
-    /* background-image: linear-gradient(to bottom, hsl(0, 100%, 50%), hsl(34, 100%, 50%)); */
-    /* background-image: linear-gradient(to bottom, rgb(22, 22, 22), rgb(54, 54, 54)); */
-    /* background-image: url("../images/art/background.png") ; */
-    background-repeat: repeat;
-    background-color: rgb(22, 22, 22);
+    background-color: rgb(0, 2, 9);
+    color: white;
 
     margin: 0;
     display: flex;
-
-}
-
-a {
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: none;
-}
-a:visited {
-    text-decoration: none;
-}
-
-#topbar {
-    margin: 0px;
-    background-color: hsl(0, 0%, 52%);
-    background-image: linear-gradient(to bottom, hsl(16, 88%, 40%), rgb(107, 19, 19));
-    height: 135px;
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    width: 100%;
-    flex-direction: row;
-
-    /* box-shadow: 0px 10px 10px 0px #ff0000; */
-    box-shadow: 3px 10px 5px #000000;
-
-    border-radius: 10px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-
-    padding-left: 20px;
-    
-
-}
-#topbar h1 {
-    font-size: 50px;
-    color: white;
-    margin: 10px 0px;
-    margin-left: 33%;
-    /*border-style: solid;
-    border-color: rgba(255,255,255,0.5);
-    padding: 3px 15%;
-    background-color: rgba(255,255,255,0.2);
-    border-radius: 10px;*/
-}
-
-/* #topbar ul {
-    display: flex;
-    list-style: none;
-    margin: 10px 0px;
-    flex-direction: row;
-    padding: 0px;
-}
-#topbar li * {
-    padding: 4px;
-    font-size: 20px;
-    margin: 0px 10px;
-    border-style: solid;
-    border-radius: 10px;
-    border-color: hsl(0, 93%, 24%);
-    background-color: rgb(118, 4, 4);
-}
-
-#topbar ul li a {
-    text-decoration: none;
-    color:black;
-}
-#topbar ul li a:hover {
-    background-color: hsla(0, 93%, 24%);
-    border-color: hsl(0, 97%, 13%);
-}
-#topbar ul li a:visited {
-    color:black;
-} */
-
-
-.sidebar {
-    /* position: fixed; */
-    min-height: 100vh;
-
-    display: flex;
-    flex-flow: column;
-    
-
-    /* border-color:brown; */
-    /* border-style: solid; */
-    border-width: 0px;
-
-}
-
-#left-sidebar {
-    background-color: rgb(98, 141, 127);
-    background-image: linear-gradient(to right, darkmagenta, aquamarine);
-    background-image: linear-gradient(to left, rgb(22, 22, 22), rgb(22, 22, 22), rgb(92, 92, 92));
-    width: 380px;
-    
-    border-right-width: 4px;
-}
-
-#right-sidebar {
-    /* background-image: linear-gradient(to right, aquamarine, darkmagenta);     */
-    background-image: linear-gradient(to right, rgb(22, 22, 22), rgb(22, 22, 22), rgb(92, 92, 92));
-    background-color: rgb(22, 22, 22);
-    width: 20%;
-    border-left-width: 4px;
-
-    align-items: center;
-}
-#right-sidebar a {
-    padding: 4px;
-    font-size: 20px;
-    margin: 0px 10px;
-    /* border-style: solid; */
-    border-radius: 10px;
-    /* border-color: hsl(0, 93%, 24%);
-    background-color: rgb(118, 4, 4); */
-    text-decoration: none;
-    color:black;
-}
-#right-sidebar a:hover {
-    /* background-color: hsla(0, 93%, 24%); */
-    /* border-color: rgb(22, 22, 22); */
-}
-#right-sidebar a:visited {
-    color:black;
-}
-
-.sidebar p {
-    margin: 20px;
-    font-size: 20px;
-    text-align: center;
-
-    background-color:rgba(240, 248, 255, 0.4);
-    border-style: solid;
-    border-radius: 8px;
-    border-color: black;
-    padding: 3px
-}
-
-
-#me-pic {
-    width: 100px;
-    height: 100px;
-
-    border-radius: 50px;
-
-
-}
-
-#logo {
-    width: 100px;
-    height: 100px;
-    background-image: url("../images/000.png");
-    background-size: 100px;
-    background-repeat: no-repeat;
-    margin-left: auto;
-    margin-right: auto;
-}
-#logo:hover {
-    background-image: url("../images/a_cat_house_logo.gif");
-}
-
-.welcome {
-    writing-mode: vertical-lr;
-    
-    font-size: 80px;
-    margin-top: 20px;
-
-    color:white;
-
-    
-}
-
-
-
-
-
-#lookyhere {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-
-}
-
-.course {
-    width: 35vw;
-    /* position: relative;
-    left: 180px; */
-
-    margin: 15px;
-    border-style: solid;
-    border-width: 6px;
-    border-color: aliceblue;
-    border-radius: 8px;
-
-    display: flex;
     flex-direction: column;
 
-    color: aquamarine;
-    background-color: rgb(0, 0, 0, 0.2);
-    /* background-image: radial-gradient(rgb(76, 118, 144), rgb(83, 54, 83)) */
-
-    
+    align-items: center;
 }
 
-.course ul {
-    background-color: rgb(0, 0, 0, 0.2);
-    border-color: aliceblue;
-    border-style: dashed;
-    border-width: 0;
-    border-top-width: 3px;
-    border-bottom-width: 3px;
-}
-.course ul li {
-    margin: 10px;
-    font-size: 22px;
-    color:burlywood;
+#top {
+    display: flex;
+    flex-direction: row;
+
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+
+    background-color: rgb(0, 0, 34);
+    background-image: linear-gradient(to right, rgb(0, 2, 9), rgb(0, 0, 34), rgb(0, 2, 9));
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: larger;
+    font-weight: bold;
+    font-style: italic;
 
 }
-.course ul li a {
-    text-decoration: none;
-    color:orange;
-}
-.course ul li a:hover {
-    text-decoration: underline;
-}
-.course ul li a:visited {
-    color:orange;
+
+#top img {
+    width: 5vh;
+    height: 5vh;
+    margin-right: 2vh;
+
 }
 
-.minecraft {
-    background-image: url('images/art/dirt.png');
-}
-
-.canvas {
-    background-image: url('https://www.pinpng.com/pngs/m/191-1910727_worn-paper-texture-old-paper-cut-png-transparent.png');
-    /* background-repeat: repeat; */
-    background-position: -100px -100px;
-}
-
-.gamer {
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F006%2F050%2F306%2Foriginal%2Fretro-style-background-with-grunge-texture-free-vector.jpg&f=1&nofb=1&ipt=f946da1faef03cee0acc85415528fc60256bd96de51fa21c01be943c4ff30141&ipo=images');
-    background-size: cover;
-}
-
-.p5js {
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.mos.cms.futurecdn.net%2FUDnQgRTL4b6o4TZQQN7vkb-970-80.jpg&f=1&nofb=1&ipt=ca1cbc08a53e37253b70c87ca67530ab944a65249c2c5ec68cc154cd2d3a34b1&ipo=images');
-    background-size: cover;
-}
-
-.misc {
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.classiciasacademy.com%2Fblog%2Fwp-content%2Fuploads%2F2017%2F03%2FMISCELLANEOUS.jpg&f=1&nofb=1&ipt=6ebea22274f34567495a54e35140eedc313255669b5557e9b08db58fbdec827b&ipo=images');
-    background-size: cover;
-}
-
-.course h1 {
-    align-self: center;
-    width: fit-content;
+#intro {
+    max-width: 700px;
+    margin: 2vh;
+    margin-bottom: 0;
     text-align: center;
-    padding: 20px;
-    font-size: 35px;
-    
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 15px;
-    border-style: solid;
-    border-color: black;
-
-}
-.course h1 a {
-    color: aquamarine;
-}
-.course h1 a:visited {
-    color: aquamarine;
 }
 
-.course p {
-    margin: 10px;
-    font-size: 24px;
+#library {
+    /* margin: 2vw; */
 }
 
+.track {
+    background-color: rgb(0, 0, 34);
+    margin: 2vh;
+    padding: 2vh;
+    border-radius: 2vh;
+}
 
-.hot {
-    font-family: 'Courier New', Courier, monospace;
-    background-image: url('../images/hot.gif');
-    background-size: contain;
-    display: inline-block;
-    color: red; 
-    text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000; 
+.track .title {
+    font-size: x-large;
+    font-weight: bold;
+    display: block;
+    /* width: 100%; */
+    border-bottom: solid white 1px;
+
+    text-decoration: none;
+    color: inherit !important;
+}
+
+.cat-gaming {
+    background-color: rgb(34, 0, 25);
+}
+.cat-functional {
+    background-color: rgb(3, 34, 0);
 }
