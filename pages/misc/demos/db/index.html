@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Demo</title>
+    <script src="./common.js"></script>
+    <script src="./app.js"></script>
+</head>
+<body>
+    <h2>Database Demo</h2>
+    <p>Hi! This is just a quick demo of fetching and updating data to a remote database (mainly for myself and whenever I showcase this to someone else)</p>
+    <p>Notes:</p>
+    <ul>
+        <li>Security features: none. This means there's no safety check to make sure the data being sent or gotten really should be. Like someone could spam update this and fill the storage of my server :<</li>
+    </ul>
+
+    <h2>Features</h2>
+    <p>Currently, this demo supports:</p>
+    <ul>
+        <li>Checking online status of the database</li>
+        <li>Fetching data with resource path</li>
+        <li>Setting data to a resource path</li>
+    </ul>
+
+    <h2>Demo</h2>
+
+    <div>
+        <p>Status: <span id="return-status"></span></p>
+        <button onclick="checkStatus()">Check status</button>
+    </div>
+
+    <div>
+        <p>Fetch Data</p>
+        <p>Value: <span id="return-data"></span></p>
+        <input type="text" placeholder="resource/path" id="fetch-path">
+        <button onclick="fetchData()">Send</button>
+    </div>
+
+    <div>
+        <p>Update Data</p>
+        <input type="text" placeholder="resource/path" id="update-path">
+        <input type="text" placeholder="value" id="update-value">
+        <button>Send</button>
+    </div>
+    
+</body>
+</html>
