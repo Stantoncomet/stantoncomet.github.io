@@ -1,7 +1,7 @@
 /***************************************************************************************************************/
 /**
- * This common.js file is shared between subsites in purrfect odds. It should be the first script loaded on a page. 
- * This top part is for accounts and data stuff.
+ * This common.js file contains the cool and awesome code for interfacing with a database. 
+ * It should be the first script loaded on a page. 
  */
 /***************************************************************************************************************/
 
@@ -13,7 +13,7 @@ const DB_URL = (endpoint) => `https://stantoncomet.gleeze.com${endpoint}`;
  * Check if database server is online
  * @returns true if database is online, false if something isnt working
  */
-async function fetchDBStatus() {
+async function fetchStatus() {
     let data = await fetch(DB_URL('/api/demo/ping'))
         .then(response => response.json())
         .catch(err => {console.log(err); return false})
@@ -22,28 +22,67 @@ async function fetchDBStatus() {
     return true;
 }
 
+
 /**
- * Fetches the latest user data from database server
- * @returns All user data in JSON format
+ * Fetches the latest data from one file
+ * @param {string} data_file path or name of file to overwrite data
+ * @returns File contents in JSON format
  */
-async function fetchLatestData() {
-    let data = await fetch(DB_URL('/api/odds/users'))
+async function fetchFileData(data_file) {
+    let data = await fetch(DB_URL(`/api/demo/resources?df=${data_file}`))
         .then(response => response.json())
-        .catch(err => {console.log(err); return 0})
+        .catch(err => {console.log(err); return 1})
     return data;
 }
 
+
 /**
- * Fetches the latest data of one user
- * @param {string} username 
- * @returns User data in JSON format
+ * Overwirtes the contents of the data file with `value`.
+ * Used in conjunction withe fetchResource() to change parts of data. 
+ * @param {string} data_file Path or name of file to overwrite data
+ * @param {object} data JSON please :)
+ * @returns 
  */
-async function fetchUserData(username) {
-    let data = await fetch(DB_URL(`/api/odds/users/${username}`))
+async function setFileData(data_file, data) {
+    // note how endpoint is the same as fetching the resource, but it's actually a different route.
+    // the fetch() function defualts to GET route, but here we are delcaring this HTTP request as POST.
+    // we include the value, as it could be very large and isn't nescarily a string, in the body of the request.
+    let success = await fetch(DB_URL(`/api/demo/resources?df=${data_file}`), {
+        mode: "cors",
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            data: data
+        })
+    })
         .then(response => response.json())
-        .catch(err => {console.log(err); return 0})
-    return data;
+        .catch(err => console.log(err))
+    return success;
 }
+
+/**
+ * 
+ * @param {string} data_file 
+ * @param {CallableFunction} dataManipulationFunction One argument is passed through here, `data`, which is the contents of the JSON file in object-from
+ */
+async function updateFileData(data_file, dataManipulationFunction) {
+    let data = await fetchFileData(data_file);
+    let new_data = dataManipulationFunction(data);
+    if (!new_data) return; // if dMF returns nothing, do nothing
+    await setFileData(data_file, new_data);
+}
+
+
+/**
+ * OUTDATED AND IRRELEVENT UNDER THIS LINE
+ * KEPT FOR FUTURE REFERENCE
+ */
+//=======================================================================================\\
+
+
+
 
 /**
  * Requests a login from the server using credentials provided
@@ -58,15 +97,8 @@ async function fetchLogin(auth) {
     return success; 
 }
 
-/**
- * OUTDATED AND IRRELEVENT UNDER THIS LINE
- * KEPT FOR FUTURE REFERENCE
- */
-//=======================================================================================\\
 
-async function updateUserResource(auth, resource_path, value) {
-    
-}
+
 
 
 
@@ -92,7 +124,6 @@ class POSTRequest {
     }
 
 }
-
 
 
 async function apud(username, data) {

@@ -25,24 +25,37 @@
 
     <h2>Demo</h2>
 
+    <p>`stats` is a data file that already exists. Try to fetch and a change it! Data files can be in folders too! Try `cars/mycarro`. Pretty sure everything is case-sensitive too. Do note the data is strictly in JSON, so yeah.</p>
+
     <div>
         <p>Status: <span id="return-status"></span></p>
         <button onclick="checkStatus()">Check status</button>
     </div>
 
-    <div>
+    <form action="javascript:void(0);">
         <p>Fetch Data</p>
-        <p>Value: <span id="return-data"></span></p>
+        <p>Value:</p>
+        <p class="codeblock" id="return-data"></p>
         <input type="text" placeholder="resource/path" id="fetch-path">
-        <button onclick="fetchData()">Send</button>
-    </div>
+        <input type="submit" onclick="fetchData()" value="GET">
+    </form>
 
-    <div>
+    <form action="javascript:void(0);">
         <p>Update Data</p>
+        <p>Success:</p>
+        <p class="codeblock" id="return-success"></p>
         <input type="text" placeholder="resource/path" id="update-path">
         <input type="text" placeholder="value" id="update-value">
-        <button>Send</button>
-    </div>
+        <input type="submit" onclick="updateData()" value="POST">
+    </form>
     
 </body>
+
+<style>
+    .codeblock {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: lightgray;
+    }
+</style>
+
 </html>
