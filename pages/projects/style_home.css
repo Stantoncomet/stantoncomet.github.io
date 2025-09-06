@@ -1,0 +1,82 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+body {
+    background-color: rgb(0, 2, 9);
+    color: white;
+
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+#top {
+    display: flex;
+    flex-direction: row;
+
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+
+    background-color: rgb(0, 0, 34);
+    background-image: linear-gradient(to right, rgb(0, 2, 9), rgb(0, 0, 34), rgb(0, 2, 9));
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: larger;
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+#top img {
+    width: 5vh;
+    height: 5vh;
+    margin-right: 2vh;
+
+}
+
+#intro {
+    max-width: 700px;
+    margin: 2vh;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#library {
+    /* margin: 2vw; */
+}
+
+.track {
+    background-color: rgb(0, 0, 34);
+    margin: 2vh;
+    padding: 2vh;
+    border-radius: 2vh;
+}
+
+.track .title {
+    font-size: x-large;
+    font-weight: bold;
+    display: block;
+    /* width: 100%; */
+    border-bottom: solid white 1px;
+
+    text-decoration: none;
+    color: inherit !important;
+}
+
+.cat-gaming {
+    background-color: rgb(34, 0, 25);
+}
+.cat-functional {
+    background-color: rgb(3, 34, 0);
+}
