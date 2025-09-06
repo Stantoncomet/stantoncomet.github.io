@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Demo</title>
+    <script src="./common.js"></script>
+    <script src="./app.js"></script>
+</head>
+<body>
+    <h2>Database Demo</h2>
+    <p>Hi! This is just a quick demo of fetching and updating data to a remote database (mainly for myself and whenever I showcase this to someone else)</p>
+    <p>Notes:</p>
+    <ul>
+        <li>Security features: none. This means there's no safety check to make sure the data being sent or gotten really should be. Like someone could spam update this and fill the storage of my server :<</li>
+    </ul>
+
+    <h2>Features</h2>
+    <p>Currently, this demo supports:</p>
+    <ul>
+        <li>Checking online status of the database</li>
+        <li>Fetching data with resource path</li>
+        <li>Setting data to a resource path</li>
+    </ul>
+
+    <h2>Demo</h2>
+
+    <p>`stats` is a data file that already exists. Try to fetch and a change it! Data files can be in folders too! Try `cars/mycarro`. Pretty sure everything is case-sensitive too. Do note the data is strictly in JSON, so yeah.</p>
+
+    <div>
+        <p>Status: <span id="return-status"></span></p>
+        <button onclick="checkStatus()">Check status</button>
+    </div>
+
+    <form action="javascript:void(0);">
+        <p>Fetch Data</p>
+        <p>Value:</p>
+        <p class="codeblock" id="return-data"></p>
+        <input type="text" placeholder="resource/path" id="fetch-path">
+        <input type="submit" onclick="fetchData()" value="GET">
+    </form>
+
+    <form action="javascript:void(0);">
+        <p>Update Data</p>
+        <p>Success:</p>
+        <p class="codeblock" id="return-success"></p>
+        <input type="text" placeholder="resource/path" id="update-path">
+        <input type="text" placeholder="value" id="update-value">
+        <input type="submit" onclick="updateData()" value="POST">
+    </form>
+    
+</body>
+
+<style>
+    .codeblock {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: lightgray;
+    }
+</style>
+
+</html>
