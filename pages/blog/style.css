@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(9, 7, 0);
+}
+
+#top {
+    background-image: linear-gradient(to right, rgb(9, 7, 0), rgb(34, 14, 0), rgb(9, 7, 0));
+}
+
+#intro {
+    border-bottom: solid rgba(255, 255, 0, 0.1) 2px;
+    border-radius: 1vh;
+}
+
+.cat-words {
+    background-color: rgb(17, 31, 0);
+    border-bottom: solid rgba(48, 73, 0, 0.5) 2px;
+    border-radius: 1vh;
+}
+
+.cat-words .title {
+    height: 4vh;
+    min-width: 50vh;
+    
+}
+
+.cat-words .title a {
+    cursor: pointer;
+}
+
+
+
+#info {
+    visibility: hidden;
+}
+
+#content {
+    visibility: hidden;
+
+    max-width: 800px;
+    text-indent: 2vh;
+
+    margin: 4vh;
+}
