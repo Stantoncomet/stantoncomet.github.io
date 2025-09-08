@@ -2,6 +2,7 @@
 /**
  * This common.js file contains the cool and awesome code for interfacing with a database. 
  * It should be the first script loaded on a page. 
+ * v1.1
  */
 /***************************************************************************************************************/
 
@@ -69,6 +70,7 @@ async function setFileData(data_file, data) {
  */
 async function updateFileData(data_file, dataManipulationFunction) {
     let data = await fetchFileData(data_file);
+    if (data.error_code) throw "File does not exist";
     let new_data = dataManipulationFunction(data);
     if (!new_data) return; // if dMF returns nothing, do nothing
     await setFileData(data_file, new_data);
