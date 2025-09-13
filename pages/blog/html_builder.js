@@ -49,9 +49,18 @@ function formatDate(epoch) {
 
 function showEle(id) {
     document.getElementById(id).style.visibility = 'visible';
-    document.getElementById(id).style.height = 'auto';
+    document.getElementById(id).style.display = 'block';
 }
 function hideEle(id) {
     document.getElementById(id).style.visibility = 'hidden';
-    document.getElementById(id).style.height = '0px';
+    document.getElementById(id).style.display = 'none';
+}
+
+/**
+ * Returns the value of an element gotten by id
+ * @param {string} id Element id
+ * @returns 
+ */
+function valOfId(id) {
+    return document.getElementById(id).value;
 }
