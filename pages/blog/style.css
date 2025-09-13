@@ -2,6 +2,15 @@ body {
     background-color: rgb(9, 7, 0);
 }
 
+button {
+    background-color: rgb(34, 14, 0);
+    color: white;
+}
+input {
+    background-color: rgb(34, 14, 0);
+    color: white;
+}
+
 #top {
     background-image: linear-gradient(to right, rgb(9, 7, 0), rgb(34, 14, 0), rgb(9, 7, 0));
 }
@@ -15,11 +24,12 @@ body {
     background-color: rgb(17, 31, 0);
     border-bottom: solid rgba(48, 73, 0, 0.5) 2px;
     border-radius: 1vh;
+
+    min-width: 35vw;
 }
 
 .cat-words .title {
     height: 4vh;
-    min-width: 50vh;
     
 }
 
@@ -40,4 +50,29 @@ body {
     text-indent: 2vh;
 
     margin: 4vh;
+}
+
+#panel {
+    position: absolute;
+    left: 0;
+    margin: 10px;
+}
+#panel-b {
+    position: absolute;
+    right: 0;
+    margin: 10px;
+
+    visibility: hidden;
+}
+
+#desk {
+    visibility: hidden;
+    display: none;
+}
+
+#desk textarea {
+    resize: none;
+    width: 90%;
+    background-color: rgb(9, 7, 0);
+    color: white;
 }

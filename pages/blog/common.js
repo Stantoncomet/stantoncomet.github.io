@@ -44,11 +44,8 @@ async function fetchFileData(data_file) {
  * @param {object} data JSON please :)
  * @returns 
  */
-async function setFileData(data_file, data) {
-    // note how endpoint is the same as fetching the resource, but it's actually a different route.
-    // the fetch() function defualts to GET route, but here we are delcaring this HTTP request as POST.
-    // we include the value, as it could be very large and isn't nescarily a string, in the body of the request.
-    let success = await fetch(DB_URL(`/api/blog/resources?df=${data_file}`), {
+async function setFileData(data_file, data, key) {
+    let success = await fetch(DB_URL(`/api/blog/resources?df=${data_file}&key=${key}`), {
         mode: "cors",
         method: "POST",
         headers: {
@@ -68,9 +65,20 @@ async function setFileData(data_file, data) {
  * @param {string} data_file 
  * @param {CallableFunction} dataManipulationFunction One argument is passed through here, `data`, which is the contents of the JSON file in object-from
  */
-async function updateFileData(data_file, dataManipulationFunction) {
+async function updateFileData(data_file, dataManipulationFunction, key) {
     let data = await fetchFileData(data_file);
+    if (data.error_code) throw "File does not exist";
     let new_data = dataManipulationFunction(data);
     if (!new_data) return; // if dMF returns nothing, do nothing
-    await setFileData(data_file, new_data);
+    await setFileData(data_file, new_data, key);
+}
+
+async function fetchKeyValidity(key) {
+    let validity = await fetch(DB_URL(`/api/blog/validity?key=${key}`))
+        .then(response => response.json())
+        .catch(err => {console.log(err); return false})
+    
+    if (validity.error_code != 1000) return false;
+    return true;
+    // i bet youd like comments describing this code wouldnt you huh
 }
