@@ -41,7 +41,7 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 function formatDate(epoch) {
     let ref = new Date(epoch);
     let year = ref.getFullYear();
-    let month = MONTHS[ref.getMonth()-1];
+    let month = MONTHS[ref.getMonth()];
     let day = ref.getDate();
 
     return `${month} ${day}, ${year}`;

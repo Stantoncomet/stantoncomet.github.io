@@ -117,7 +117,7 @@ async function writeEntry(id, title, paragraphs, key) {
         let e = {
             title: title,
             epoch: Date.now(),
-            preview: paragraphs[0].slice(0, 20)
+            preview: paragraphs[0].slice(0, 40)
         }
         data.public[id] = e;
         return data;
