@@ -25,7 +25,7 @@ input {
     border-bottom: solid rgba(48, 73, 0, 0.5) 2px;
     border-radius: 1vh;
 
-    min-width: 35vw;
+    /* width: 400px; */
 }
 
 .cat-words .title {
@@ -50,6 +50,8 @@ input {
     text-indent: 2vh;
 
     margin: 4vh;
+
+    /* background-color: black; */
 }
 
 #panel {
