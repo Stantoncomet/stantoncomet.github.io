@@ -166,6 +166,32 @@ async function saveNewEntry() {
 }
 
 
+function saveLocal() {
+    let all_text = valOfId('entry-input');
+    localStorage.setItem('stanton_blog_local_entry_save', all_text);
+}
+function loadLocal() {
+    let saved_text = localStorage.getItem('stanton_blog_local_entry_save');
+    document.getElementById('entry-input').value = saved_text;
+}
+
+
+async function editOldEntry() {
+    let entry_id = valOfId('edit-entry-id');
+    let entry_content = await fetchFileData(`public/${entry_id}`);
+    if (!entry_list.public[entry_id]) return;
+    let entry_title = entry_list.public[entry_id].title;
+
+    let old_text = `${entry_id};${entry_title};\n\n\n`;
+
+    entry_content.paragraphs.forEach(p => {
+        old_text+=p;
+        old_text+="\n";
+    })
+    document.getElementById('entry-input').value = old_text;
+}
+
+
 
 window.onload = async () => {
     // only try to fetch conent if db is online
@@ -173,7 +199,7 @@ window.onload = async () => {
     if (!online) {
         // red, offline indicator
         document.getElementById('intro').style.borderColor = 'rgba(255, 0, 0, 0.1)'
-        addTrack("Unable to Borrow Content", formatDate(Date.now()), "Something is offline...");
+        addTrack("Unable to Borrow Content", formatDate(Date.now()), "Something is offline................");
         return;
     }
 
@@ -182,4 +208,8 @@ window.onload = async () => {
     fetchLibrary();
 
     accessAdmin();
+
+    // reset this thing
+    document.getElementById('edit-entry-id').value = "";
 }
+

@@ -13,6 +13,8 @@ input {
 
 #top {
     background-image: linear-gradient(to right, rgb(9, 7, 0), rgb(34, 14, 0), rgb(9, 7, 0));
+
+    z-index: 1;
 }
 
 #intro {
@@ -41,10 +43,12 @@ input {
 
 #info {
     visibility: hidden;
+    display: none;
 }
 
 #content {
     visibility: hidden;
+    display: none;
 
     max-width: 800px;
     text-indent: 2vh;
@@ -55,14 +59,18 @@ input {
 }
 
 #panel {
-    position: absolute;
+    position: fixed;
     left: 0;
     margin: 10px;
+
+    z-index: 2;
 }
 #panel-b {
-    position: absolute;
+    position: fixed;
     right: 0;
     margin: 10px;
+
+    z-index: 2;
 
     visibility: hidden;
 }
