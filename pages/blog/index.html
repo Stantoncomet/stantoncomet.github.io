@@ -42,13 +42,25 @@
 
     <div id="desk">
         <textarea id="entry-input" rows="20" cols="80" placeholder="the world awaits you"></textarea>
-        <button onclick="saveNewEntry()">Save</button>
+        <div>
+            <!-- Disable password manager whcih keeps popping up and is anoying me -->
+            <input name="disable-pwd-mgr-1" type="password" id="disable-pwd-mgr-1" style="display: none;" value="disable-pwd-mgr-1" />
+            <input name="disable-pwd-mgr-2" type="password" id="disable-pwd-mgr-2" style="display: none;" value="disable-pwd-mgr-2" />
+            <input name="disable-pwd-mgr-3" type="password" id="disable-pwd-mgr-3" style="display: none;" value="disable-pwd-mgr-3" />
+            <!--  -->
+            <button onclick="saveLocal()">Save</button>
+            <button onclick="loadLocal()">Load</button>
+            <input id="edit-entry-id" type="text" placeholder="entry_id" size="10">
+            <button onclick="editOldEntry()">Edit</button>
+            <button onclick="saveNewEntry()">Publish</button>
+        </div>
     </div>
 
 
     <div id="panel">
         <input type="password" size="5" placeholder="****" id="key-input">
         <button onclick="accessAdmin()">:?</button>
+        <!-- <p>DEV EDITION</p> -->
     </div>
     <div id="panel-b">
         <button onclick="showDesk()">new</button>
