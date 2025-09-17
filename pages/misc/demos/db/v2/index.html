@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB Demo v2</title>
+    <script src="./common.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <h2>Database Demo v2</h2>
+    <p>This should be functionally similar to the other database, but faster. This is done with the methods listed below.</p>
+    <ul>
+        <li>Websockets (instead of or in conjunction with HTTP requests)</li>
+        <li>A real database like SQL (instead of JSON files)</li>
+        <li>Caching</li>
+    </ul>
+
+    <h2>Features</h2>
+    <p>Currently, this demo supports:</p>
+    <ul>
+        <li>Checking online status of the database</li>
+        <li>Fetching data with resource path</li>
+        <li>Setting data to a resource path</li>
+    </ul>
+    
+    <h2>Demo</h2>
+
+    <p>working on it...</p>
+
+    <div>
+        <p>WebSocket status: <span id="return-status">disconnected</span></p>
+    </div>
+
+    <form action="javascript:void(0);">
+        <p>Fetch Data</p>
+        <p>Value:</p>
+        <p class="codeblock" id="return-data"></p>
+        <input type="text" placeholder="resource/path" id="fetch-path">
+        <input type="submit" onclick="fetchData()" value="send">
+    </form>
+
+</body>
+<style>
+    .codeblock {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: lightgray;
+    }
+</style>
+</html>
