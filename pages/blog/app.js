@@ -130,15 +130,6 @@ async function writeEntry(id, title, paragraphs, key) {
 
 }
 
-// async function testSave() {
-//     let words = [
-//         "2nd ever post, wow!",
-//         "maybe one day I can write these from this website and save them!"
-//     ]
-//     await writeEntry('hello_world', 'Hello World!', words);
-// }
-
-
 async function accessAdmin() {
     let key_input = valOfId('key-input');
     if (key_input == "") return;

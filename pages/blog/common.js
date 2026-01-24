@@ -81,4 +81,5 @@ async function fetchKeyValidity(key) {
     if (validity.error_code != 1000) return false;
     return true;
     // i bet youd like comments describing this code wouldnt you huh
+    // if you're this far tho, you could probably make a good guess
 }
