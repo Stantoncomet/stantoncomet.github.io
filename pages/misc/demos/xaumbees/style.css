@@ -1,0 +1,23 @@
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: tan;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    image-rendering: crisp-edges;
+}
+
+#screen {
+    /* border: 2px solid black; */
+
+    height: 90%;
+}

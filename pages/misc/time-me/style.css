@@ -1,0 +1,90 @@
+
+
+body {
+    background-color: rgb(212, 198, 0);
+    background-image: radial-gradient(1.5px, rgb(87, 90, 121), rgb(212, 198, 0));
+    background-size: 60px 60px;
+    background-repeat: repeat;
+}
+
+#top {
+    background-color: rgb(41, 103, 219);
+    background-image: none;
+    text-decoration: underline;
+
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px;
+}
+
+#intro {
+    color: black
+}
+
+#db-status {
+    background-color: black;
+    padding: 5px;
+    width: min-content;
+    border-radius: 100px;
+}
+
+
+.cat-clock {
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+
+    background-color: crimson;
+
+    box-shadow: rgba(0, 0, 0, 0.5) 10px 10px;
+}
+
+@media screen and (max-width: 1000px){
+    .cat-clock {
+        width: 60vw;
+    }
+}
+@media screen and (max-width: 700px){
+    .cat-clock {
+        width: 80vw;
+    }
+}
+
+.time-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+}
+.time-info p {
+    text-align: left;
+    font-weight: bold;
+}
+
+
+.title {
+    height: 4vh;
+}
+
+.title a {
+    cursor: pointer;
+}
+
+.cat-clock button {
+    align-self: center;
+
+    /* width: 8vw; */
+
+    background-color: rgb(71, 192, 40);
+    border-color: white;
+    box-shadow: rgba(0, 0, 0, 0.5) 3px 3px;
+
+    margin: 1vh;
+    padding: 1vh 1vw;
+
+    color: black;
+    font-size: large;
+}
+
+.log-link {
+    color: white;
+    margin-left: 2vh;
+    
+}
