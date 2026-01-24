@@ -1,5 +1,6 @@
 /**
  * idk man just playing around with ways to simplify creating html with js
+ * (because i dont wanna use node)
  * v0.1
  */
 
