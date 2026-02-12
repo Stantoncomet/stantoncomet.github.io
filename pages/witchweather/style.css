@@ -21,6 +21,13 @@ body {
     margin: 0;
 }
 
+/* General elements */
+button {
+    color: white;
+    background-color: black;
+    border-color: rgb(130, 19, 19);
+}
+
 h1 {
     font-size: xx-large;
     color: white;
@@ -45,6 +52,7 @@ a {
     top: 10px;
 }
 
+/* Info box styles */
 #imgloaded {
     top: auto;
     bottom: 0;
@@ -54,7 +62,40 @@ a {
     font-size: xx-small;
     font-family: 'Courier New', Courier, monospace;
 }
+#fullscreen-load {
+    left: auto;
+    right: 10px;
+    color: white;
+}
+#fullscreen-load p {
+    font-size: small;
+    font-family: 'Courier New', Courier, monospace;   
+}
+#controls {
+    visibility: hidden;
 
+    left: auto;
+    top: auto;
+    right: 10px;
+    bottom: 10px;
+
+    z-index: 1;
+}
+#controls button {
+    width: 75px;
+    height: 50px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+/* Slide stuff */
+#fullscreen {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
 
 .slide {
     visibility: hidden;
@@ -66,6 +107,8 @@ a {
 
     padding: 10px;
     padding-right: 0;
+
+    /* scale: 1.4; */
 }
 .slide h1 {
     color: black;

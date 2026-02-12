@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', e => {
     //image loading progress
     total_images = document.querySelectorAll('img').length;
     document.querySelectorAll('img').forEach(i => i.addEventListener('load', imgLoad));
+
 })
 
 function loadSlide(slide) {
@@ -46,8 +47,18 @@ function prevSlide() {
 }
 
 
+//
+function fullscreen() {
+    document.getElementById('fullscreen').requestFullscreen();
+    document.getElementById('controls').style.visibility = 'visible';
+    all_slides.forEach(s => s.style.scale = 1.4);
 
-
+}
+function fullscreenLeave() {
+    document.exitFullscreen();
+    document.getElementById('controls').style.visibility = 'hidden';
+    all_slides.forEach(s => s.style.scale = 1.0);
+}
 
 
 
