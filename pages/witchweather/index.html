@@ -16,7 +16,21 @@
         <p>Slide <span>0 of 0</span></p>
         <p>(<span>0 of 0</span> images loaded)</p>
     </div>
+    <div class="info" id="fullscreen-load">
+        <button onclick="fullscreen()"><p><u>PRESENT IN FULLSCREEN</u></p></button>
+    </div>
+    
 
+
+
+    <!-- Content to be fullscreen inside this div -->
+    <div id="fullscreen">
+    
+    <div class="info" id="controls">
+        <button onclick="prevSlide()"><</button>
+        <button onclick="nextSlide()">></button>
+        <button onclick="fullscreenLeave()">X</button>
+    </div>
 
     <div class="slide">
         <div class="l">
@@ -58,7 +72,7 @@
         </div>
         <div class="r">
             <p>This happened between the 13th-18th centuries.</p>
-            <p>One possible reason was the changing climate. It was getting colder that normal in lots of places.</p>
+            <p>One possible reason was the changing climate. It was getting colder than normal in lots of places.</p>
         </div>   
     </div>
 
@@ -129,7 +143,7 @@
             <p># of trials and the temperature during them</p>
         </div>
         <div class="r">
-            <p>This further shows a negative correlation between number witch trials and temperature.</p>
+            <p>This further shows the negative correlation between number witch trials and temperature.</p>
             <p>As Oster notes, this is a small sample, though it does complement the larger picture of trends.</p>
         </div>
     </div>
@@ -205,6 +219,8 @@
                 <li>Thank you!</li>
             </ul>
         </div>
+    </div>
+
     </div>
 
 </body>
