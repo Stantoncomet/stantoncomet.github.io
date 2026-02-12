@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB Demo Example</title>
+    <script src="./common.js"></script>
+    <script src="./example.js"></script>
+</head>
+<body>
+    <h2>Example</h2>
+    <p>Here's just a small example of what you could do with a database system.</p>
+
+    <h2>Menu</h2>
+    <!-- Login form -->
+    <form action="javascript:void(0);">
+        <input type="text" placeholder="username" id="username">
+        <input type="submit" onclick="login()" value="Login">
+    </form>
+    <!-- Display for info -->
+    <div id="stats">
+        <p id="name">not logged in</p>
+        <p id="money">$0</p>
+        <p id="friend-list">no friends</p>
+    </div>
+    <!-- Actions -->
+    <div>
+        <button onclick="upMoney(10)">+$10</button>
+        <button onclick="upMoney(-10)">-$10</button>
+        
+        <form action="javascript:void(0);">
+            <input type="text" placeholder="username" id="friend-name">
+            <input type="submit" onclick="addFriend()" value="Add Friend">
+        </form>
+    </div>
+</body>
+</html>

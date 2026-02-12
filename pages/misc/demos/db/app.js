@@ -42,6 +42,14 @@ async function updateData() {
     let resource_path = document.getElementById('update-path').value;
     let value = document.getElementById('update-value').value;
 
+    // parse JSON
+    try {
+        value = JSON.parse(value);
+    } catch (err) {
+        document.getElementById('return-success').innerText = 'Data is not JSON, sorry!';
+        return;
+    }
+
     // wait for resource to update, returns success or failure
     let success = await updateResource(resource_path, value);
 
