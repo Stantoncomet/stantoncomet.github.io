@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: black;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Special Elite", system-ui;
+    font-weight: 400;
+    font-style: normal;
+
+    height: 100%;
+    margin: 0;
+}
+
+h1 {
+    font-size: xx-large;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+h2 {
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p, li {
+    font-size: x-large;
+}
+
+a {
+    color:firebrick
+}
+
+.info {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+
+#imgloaded {
+    top: auto;
+    bottom: 0;
+    color: white;
+}
+#imgloaded p {
+    font-size: xx-small;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.slide {
+    visibility: hidden;
+    display: none;
+
+    background-color: rgb(255, 252, 229);
+
+    /* width: 70%; */
+
+    padding: 10px;
+    padding-right: 0;
+}
+.slide h1 {
+    color: black;
+    font-size: xx-large;
+
+    max-width: 40vw;
+}
+
+.slide img {
+    max-height: 50vh;
+    max-width: 40vw;
+
+    border-radius: 20px;
+    border: solid black 2px;
+}
+
+.slide p {
+    max-width: 40vw;
+}
+
+.slide .l {
+    margin-right: 40px;
+}
+
+
+.slide .r {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 50px;
+
+    max-width: 400px;
+}
