@@ -51,7 +51,7 @@ function prevSlide() {
 function fullscreen() {
     document.getElementById('fullscreen').requestFullscreen();
     document.getElementById('controls').style.visibility = 'visible';
-    all_slides.forEach(s => s.style.scale = 1.4);
+    all_slides.forEach(s => s.style.scale = 1.2);
 
 }
 function fullscreenLeave() {
