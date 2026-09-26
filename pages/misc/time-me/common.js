@@ -1,0 +1,84 @@
+/***************************************************************************************************************/
+/**
+ * This common.js file contains the cool and awesome code for interfacing with the database. 
+ * Specifically adjusted for the time-me page. Base code from:
+ * Demo v1.0 and the blog page
+ */
+/***************************************************************************************************************/
+
+// Global vars
+const DB_URL = (endpoint) => `https://stantoncomet.gleeze.com${endpoint}`;
+
+
+/**
+ * Check if database server is online
+ * @returns true if database is online, false if something isnt working
+ */
+async function fetchStatus() {
+    let data = await fetch(DB_URL('/api/time/ping'))
+        .then(response => response.json())
+        .catch(err => {console.log(err); return false})
+    if (!data) // when nginx or the nodejs server is down, data == false
+        return false;
+    return true;
+}
+
+
+/**
+ * Fetches the latest data from one file
+ * @param {string} data_file path or name of file to overwrite data
+ * @returns File contents in JSON format
+ */
+async function fetchFileData(data_file) {
+    let data = await fetch(DB_URL(`/api/time/resources?df=${data_file}`))
+        .then(response => response.json())
+        .catch(err => {console.log(err); return 1})
+    return data;
+}
+
+
+/**
+ * Overwirtes the contents of the data file with `value`.
+ * Used in conjunction withe fetchResource() to change parts of data. 
+ * @param {string} data_file Path or name of file to overwrite data
+ * @param {object} data JSON please :)
+ * @returns 
+ */
+async function setFileData(data_file, data, key) {
+    let success = await fetch(DB_URL(`/api/time/resources?df=${data_file}&key=${key}`), {
+        mode: "cors",
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            data: data
+        })
+    })
+        .then(response => response.json())
+        .catch(err => console.log(err))
+    return success;
+}
+
+/**
+ * 
+ * @param {string} data_file 
+ * @param {CallableFunction} dataManipulationFunction One argument is passed through here, `data`, which is the contents of the JSON file in object-from
+ */
+async function updateFileData(data_file, dataManipulationFunction, key) {
+    let data = await fetchFileData(data_file);
+    if (data.error_code) throw "File does not exist";
+    let new_data = dataManipulationFunction(data);
+    if (!new_data) return; // if dMF returns nothing, do nothing
+    await setFileData(data_file, new_data, key);
+}
+
+async function fetchKeyValidity(key) {
+    let validity = await fetch(DB_URL(`/api/time/validity?key=${key}`))
+        .then(response => response.json())
+        .catch(err => {console.log(err); return false})
+    
+    if (validity.error_code != 1000) return false;
+    return true;
+    // i bet youd like comments describing this code wouldnt you huh
+}
